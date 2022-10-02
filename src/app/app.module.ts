@@ -16,9 +16,9 @@ import { TrabajadorComponent } from './trabajador/trabajador.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
-    GestionTrabajadoresComponent
-    TrabajadorComponent
+    HomeComponent,
+    GestionTrabajadoresComponent,
+    TrabajadorComponent,
   ],
   imports: [
     BrowserModule,

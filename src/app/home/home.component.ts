@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { LoginService } from '../services/login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -9,58 +9,65 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  protected options = [
+  
+  protected optionsTrabajador = [
     {
       title: "Gestión de Trabajadores",
       icon: "fa-solid fa-user-gear",
-      route: "home"
+      route: "gestion-trabajadores"
     },
     {
       title: "Gestión de Sucursales",
-      icon: "fa-solid fa-users",
-      route: "home"
+      icon: "fa-solid fa-shop",
+      route: ""
     },
     {
       title: "Gestion de Proveedores",
-      icon: "fa-solid fa-calendar-check",
-      route: "home"
+      icon: "fa-solid fa-truck",
+      route: ""
     },
      {
       title: "Gestion de Insumos",
-      icon: "fa-solid fa-chart-line",
-      route: "home"
+      icon: "fa-solid fa-barcode",
+      route: ""
     },
-    /**{
+    {
       title: "Gestion de Lavados",
-      icon: "fa-solid fa-chart-line",
-      route: " "
+      icon: "fa-solid fa-car",
+      route: ""
     },
     {
       title: "Gestion de Clientes",
-      icon: "fa-solid fa-chart-line",
-      route: " "
+      icon: "fa-solid fa-user",
+      route: ""
     },
     {
       title: "Registro de Citas",
-      icon: "fa-solid fa-chart-line",
-      route: " "
+      icon: "fa-solid fa-calendar-check",
+      route: ""
     },
     {
       title: "Facturacion",
-      icon: "fa-solid fa-chart-line",
-      route: " "
-    }, **/
+      icon: "fa-solid fa-receipt",
+      route: ""
+    }, 
+    {
+      title: "Reportes",
+      icon: "fa-solid fa-file-pdf",
+      route: ""
+    }, 
   ];
 
-  /**protected optionsCliente = [
+  protected optionsCliente = [
     {
-      title: "Gestión de trabajadores",
-      icon: "fa-solid fa-user-gear",
-      route: " "
+      title: "Registro de Citas",
+      icon: "fa-solid fa-calendar-check",
+      route: ""
     },
   ];
-  **/
-  constructor(private router: Router) { }
+  constructor(
+    protected loginService: LoginService,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
