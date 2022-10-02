@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { GestionTrabajadoresComponent } from './gestion-trabajadores/gestion-trabajadores.component';
+import { TrabajadorComponent } from './trabajador/trabajador.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    GestionTrabajadoresComponent
+    GestionTrabajadoresComponent,
+    TrabajadorComponent
   ],
   imports: [
     BrowserModule,
