@@ -1,0 +1,47 @@
+<div class="container text-center">
+  <div class="row align-items-center mt-5">
+    <div class="col align-self-center">
+      <button type="button" class="btn btn-primary bg-white text-dark" (click)="crearTrabajador()">Crear trabajador</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Cédula</th>
+            <th>Nombre completo</th>
+            <th>Fecha de ingreso</th>
+            <th>Fecha de nacimiento</th>
+            <th>Edad</th>
+            <th>Rol</th>
+            <th>Tipo pago</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let trabajador of trabajadores">
+            <th>{{ trabajador.cedula_trabajador }}</th>
+            <td>{{ nombreCompleto(trabajador) }}</td>
+            <td>{{ fechaIngreso(trabajador) }}</td>
+            <td>{{ fechaNacimiento(trabajador) }}</td>
+            <td>{{ edad(trabajador) }}</td>
+            <td>{{ trabajador.tipo_rol }}</td>
+            <td>{{ trabajador.tipo_pago }}</td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="editarTrabajador(trabajador)">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-primary border-danger bg-transparent" (click)="eliminarTrabajador(trabajador.cedula_trabajador)">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
