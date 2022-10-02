@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { HomeComponent } from './home/home.component';
 import { GestionTrabajadoresComponent } from './gestion-trabajadores/gestion-trabajadores.component';
 import { TrabajadorComponent } from './trabajador/trabajador.component';
 
@@ -15,8 +16,9 @@ import { TrabajadorComponent } from './trabajador/trabajador.component';
   declarations: [
     AppComponent,
     LoginComponent,
+    HomeComponent,
     GestionTrabajadoresComponent,
-    TrabajadorComponent
+    TrabajadorComponent,
   ],
   imports: [
     BrowserModule,
