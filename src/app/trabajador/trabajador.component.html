@@ -1,0 +1,163 @@
+<div class="container text-center">
+  <div class="mt-5">
+    <div class="card w-75 mx-auto">
+      <div class="card-header">
+        <h2>{{ title }}</h2>
+      </div>
+      <div class="card-body">
+        <div class="container text-center">
+          <form [formGroup]="trabajadorForm" (ngSubmit)="onSubmit()">
+            <div class="row mt-3">
+              <div class="col">
+                <label for="cedula_trabajador">Cedula</label>
+                <input
+                  type="text"
+                  formControlName="cedula_trabajador"
+                  class="form-control mt-2"
+                  [ngClass]="{
+                    'is-invalid': trabajadorFormControls['cedula_trabajador'].errors
+                  }"
+                />
+              </div>
+              <div class="col">
+                <label for="nombre">Nombre</label>
+                <input
+                  type="text"
+                  formControlName="nombre"
+                  class="form-control mt-2"
+                  [ngClass]="{
+                    'is-invalid': trabajadorFormControls['nombre'].errors
+                  }"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label for="primer_apellido">Primer apellido</label>
+                <input
+                  type="text"
+                  formControlName="primer_apellido"
+                  class="form-control mt-2"
+                  [ngClass]="{
+                    'is-invalid':
+                      trabajadorFormControls['primer_apellido'].errors
+                  }"
+                />
+              </div>
+              <div class="col">
+                <label for="segundo_apellido">Segundo apellido</label>
+                <input
+                  type="text"
+                  formControlName="segundo_apellido"
+                  class="form-control mt-2"
+                  [ngClass]="{
+                    'is-invalid':
+                      trabajadorFormControls['segundo_apellido'].errors
+                  }"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label for="password_trabajador">Contraseña</label>
+                <input
+                  type="text"
+                  formControlName="password_trabajador"
+                  class="form-control mt-2 w-50 mx-auto"
+                  [ngClass]="{
+                    'is-invalid':
+                      trabajadorFormControls['password_trabajador'].errors
+                  }"
+                />
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <label for="id_rol">Rol</label>
+                <select
+                  formControlName="id_rol"
+                  class="form-select form-control text-center mt-2 mx-auto"
+                  [ngClass]="{
+                    'is-invalid': trabajadorFormControls['id_rol'].errors
+                  }"
+                >
+                  <option *ngFor="let rol of roles_trabajador" [value]="rol.id_rol">
+                    {{ rol.tipo_rol }}
+                  </option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="id_tipo_pago">Tipo de pago</label>
+                <select
+                  formControlName="id_tipo_pago"
+                  class="form-select form-control text-center mt-2 mx-auto"
+                  [ngClass]="{
+                    'is-invalid': trabajadorFormControls['id_tipo_pago'].errors
+                  }"
+                >
+                <option *ngFor="let tipo_pago_trabajador of tipos_pago_trabajador" [value]="tipo_pago_trabajador.id_tipo_pago">
+                  {{ tipo_pago_trabajador.tipo_pago }}
+                </option>
+                </select>
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col">
+                <label for="fechaIngreso">Fecha de ingreso</label>
+                <div class="input-group mt-2">
+                  <input
+                    formControlName="fechaIngreso"
+                    class="form-control"
+                    placeholder="aaaa-mm-dd"
+                    name="dpfi"
+                    ngbDatepicker
+                    #dfi="ngbDatepicker"
+                  />
+                  <button
+                    class="btn btn-outline-secondary calendar"
+                    (click)="dfi.toggle()"
+                    type="button"
+                  >
+                    <i class="fa-solid fa-calendar"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col">
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
+                <div class="input-group mt-2">
+                  <input
+                    formControlName="fechaNacimiento"
+                    class="form-control"
+                    placeholder="aaaa-mm-dd"
+                    name="dpfn"
+                    ngbDatepicker
+                    #dfn="ngbDatepicker"
+                  />
+                  <button
+                    class="btn btn-outline-secondary calendar"
+                    (click)="dfn.toggle()"
+                    type="button"
+                  >
+                    <i class="fa-solid fa-calendar"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-5">
+              <button
+                [disabled]="loading || trabajadorForm.invalid"
+                class="btn btn-primary"
+              >
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
