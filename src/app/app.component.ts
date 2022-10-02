@@ -11,6 +11,9 @@ export class AppComponent {
   
   constructor(protected loginService: LoginService) {}
 
+  /**
+   * Función para desloggearse.
+   */
   logout() {
     this.loginService.logout();
   }
