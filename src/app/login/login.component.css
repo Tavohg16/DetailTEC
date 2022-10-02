@@ -2,6 +2,7 @@
     height: 100vh;
     padding: 0;
     background-color: #FBFAF0;
+    overflow: hidden;
 }
 
 .car-pic {
@@ -10,7 +11,7 @@
 
 .car-image {
     max-width: 50vw;
-    height: 99vh;
+    height: 100vh;
 }
 
 .login {
