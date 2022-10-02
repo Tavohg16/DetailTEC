@@ -1,0 +1,25 @@
+.container-dim {
+    height: 100vh;
+    padding: 0;
+    background-color: #FBFAF0;
+}
+
+.car-pic {
+    height: 100vh;
+}
+
+.car-image {
+    max-width: 50vw;
+    height: 99vh;
+}
+
+.login {
+    height: 100vh;
+    max-width: 35%;
+    margin: auto;
+    padding-top:15%;
+}
+
+form {
+    display: block;
+}
