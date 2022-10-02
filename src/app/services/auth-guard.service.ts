@@ -31,6 +31,8 @@ export class AuthGuardService implements CanActivate {
       else {
         // Manejo de casos de trabajador o cliente para cada ruta
         switch (route.routeConfig?.path) {
+          case 'gestion-trabajadores':
+            return this.loginService.isAdmin;
           default:
             return true;
         }

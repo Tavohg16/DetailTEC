@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { GestionTrabajadoresComponent } from './gestion-trabajadores/gestion-trabajadores.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    GestionTrabajadoresComponent
   ],
   imports: [
     BrowserModule,
