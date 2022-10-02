@@ -64,7 +64,7 @@ export class TrabajadorComponent implements OnInit {
         nombre: [this.params.nombre, Validators.required],
         primer_apellido: [this.params.primer_apellido, Validators.required],
         segundo_apellido: [this.params.segundo_apellido, Validators.required],
-        cedula_trabajador: [{value: this.params.cedula, disabled: true}, Validators.required],
+        cedula_trabajador: [{value: this.params.cedula_trabajador, disabled: true}, Validators.required],
         password_trabajador: [this.params.password_trabajador, Validators.required],
         fechaIngreso: [
           {
