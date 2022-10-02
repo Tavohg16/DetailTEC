@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { HomeComponent } from './home/home.component';
 import { GestionTrabajadoresComponent } from './gestion-trabajadores/gestion-trabajadores.component';
+import { TrabajadorComponent } from './trabajador/trabajador.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { GestionTrabajadoresComponent } from './gestion-trabajadores/gestion-tra
     LoginComponent,
     HomeComponent
     GestionTrabajadoresComponent
+    TrabajadorComponent
   ],
   imports: [
     BrowserModule,
