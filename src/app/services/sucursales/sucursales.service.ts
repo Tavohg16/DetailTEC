@@ -43,7 +43,7 @@ export class SucursalesService {
    * Metodo borrar una sucursal.
    * @returns observable del query: Observable<SucursalesResponse[]>.
    */
-   borrarTrabajador(nombre_sucursal: string) {
+   borrarSucursal(nombre_sucursal: string) {
     const body = JSON.stringify({nombre_sucursal});
     return this.http.delete<SucursalResponse>(
       this.sucursalesUrl,

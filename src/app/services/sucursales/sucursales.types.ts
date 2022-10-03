@@ -12,8 +12,8 @@ export interface Sucursal {
     distrito: string;
     fecha_apertura: string;
     fecha_inicio_gerencia: string;
-    nombre_trabajador_gerente: string;
-    primer_apellido_trabajador_gerente: string;
+    nombre_trabajador_gerente?: string;
+    primer_apellido_trabajador_gerente?: string;
 }
 
 export interface SucursalResponse {

@@ -82,8 +82,8 @@ export class GestionSucursalesComponent implements OnInit {
    * Función para borrar una sucursal haciendo uso del servicio de sucursales.
    * @param nombre_sucursal nombre de la sucursal que se quiere eliminar.
    */
-   protected eliminarSucursal(nombre_sucursal: string) {
-    this.sucursalesService.borrarTrabajador(nombre_sucursal).subscribe({
+   protected borrarSucursal(nombre_sucursal: string) {
+    this.sucursalesService.borrarSucursal(nombre_sucursal).subscribe({
       next: (sucursalResponse: SucursalResponse) => {
         alert(sucursalResponse.mensaje);
         this.ObtenerSucursales()
