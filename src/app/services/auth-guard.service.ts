@@ -33,8 +33,13 @@ export class AuthGuardService implements CanActivate {
         switch (route.routeConfig?.path) {
           case 'gestion-trabajadores':
             return this.loginService.isAdmin;
+          case 'gestion-sucursales':
+            return this.loginService.isAdmin;
           default:
             return true;
+          
+
+          
         }
       }
     }
