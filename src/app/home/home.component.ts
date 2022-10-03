@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     {
       title: "Gestión de Sucursales",
       icon: "fa-solid fa-shop",
-      route: ""
+      route: "gestion-sucursales"
     },
     {
       title: "Gestion de Proveedores",
