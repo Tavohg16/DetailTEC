@@ -13,7 +13,7 @@ import {
   providedIn: 'root'
 })
 export class SucursalesService {
-  // Definiendo ruta a la que se hara los request http relacionados a los trabajadores
+  // Definiendo ruta a la que se hara los request http relacionados a las sucursales.
   private sucursalesUrl: string = `${environment.apiUrl}/manage/office`;
 
   private httpOptions = {

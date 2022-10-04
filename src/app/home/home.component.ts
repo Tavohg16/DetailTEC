@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     {
       title: "Gestion de Proveedores",
       icon: "fa-solid fa-truck",
-      route: ""
+      route: "gestion-proveedores"
     },
      {
       title: "Gestion de Insumos",

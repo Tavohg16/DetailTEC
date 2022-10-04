@@ -89,7 +89,7 @@ export class GestionSucursalesComponent implements OnInit {
         this.ObtenerSucursales()
       },
       error: (error) => {
-        alert(`Error al eliminar trabajador.`);
+        alert(`Error al eliminar sucursal.`);
         console.log(error);
       },
     });

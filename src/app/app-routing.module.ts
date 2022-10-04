@@ -8,6 +8,7 @@ import {
   AuthGuardService as AuthGuard 
 } from './services/auth-guard.service';
 import { TrabajadorComponent } from './trabajador/trabajador.component';
+import { GestionProveedoresComponent } from './gestion-proveedores/gestion-proveedores.component';
 /**
  * Definiendo rutas a componentes
  */
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'gestion-trabajadores', component: GestionTrabajadoresComponent ,  pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'trabajador', component: TrabajadorComponent ,  pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'gestion-sucursales', component: GestionSucursalesComponent, pathMatch: 'full'},
+  { path: 'gestion-proveedores', component: GestionProveedoresComponent, pathMatch: 'full'},
   { path: '**', redirectTo: 'home'}
 ];
 
