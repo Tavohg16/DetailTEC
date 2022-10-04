@@ -31,13 +31,7 @@ export class GestionProveedoresComponent implements OnInit {
     this.proveedoresService.todosProveedores().subscribe({
       next: (proveedoresResponse: ProveedoresResponse) => {
         if (proveedoresResponse.exito) {
-          this.proveedores = proveedoresResponse.proveedores.sort(
-            (proveedorA, proveedorB) => {
-              return proveedorA.cedula_juridica_proveedor.localeCompare(
-                proveedorB.cedula_juridica_proveedor
-              );
-            }
-          );
+          this.proveedores = proveedoresResponse.proveedores;
         } else {
           alert('Error al obtener proveedores.');
         }
