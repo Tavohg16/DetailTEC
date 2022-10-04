@@ -39,11 +39,12 @@ export class SucursalComponent implements OnInit {
     private localidadService: LocalizacionService,
     private sucursalesService: SucursalesService
   ) {
+
+    
     /**
      * Obteniendo parámetros del routing para saber si se está creando o editando un trabajador
      * y así armar los formularios respectivamente.
      */
-     
      this.params = router.getCurrentNavigation()?.extras.state;
      if (!this.params) {
        this.formType = 'crear';
@@ -71,9 +72,9 @@ export class SucursalComponent implements OnInit {
          nombre_sucursal: [this.params.nombre_sucursal, Validators.required],
          telefono: [this.params.telefono, Validators.required],
          cedula_trabajador_gerente: [this.params.cedula_trabajador_gerente, Validators.required],
-         provincia: [this.params.provincia, Validators.required],
-         canton: [this.params.canton, Validators.required],
-         distrito: [this.params.distrito, Validators.required],
+         provincia: ["", Validators.required],
+         canton: ["", Validators.required],
+         distrito: ["", Validators.required],
          fecha_apertura: [
            {
              year: fechaAperturaSucursal.getFullYear(), 
@@ -95,36 +96,73 @@ export class SucursalComponent implements OnInit {
 
      
    }
+   
 
-  
-
+   /**
+     * Obteniendo lista de provincias al inicial el componente.
+     * Revisa si hay parametros en el componente, de ser asi,
+     * utiliza localidadService para cargar las listas de 
+     * cantones y provincias que corresponden a los parametros
+     * para popular los selectores en el form cuando se quiere
+     * editar una sucursal.
+     */
   ngOnInit(): void {
-    // Obteniendo opciones de localidades
-    
+
     this.localidadService.ObtenerProvincias().subscribe({
       next: (localidadesResponse: LocalidadesResponse) => {
         this.lista_provincias = localidadesResponse.data;
 
-        
+        if(this.params){
+          this.id_provincia = this.identificarProvincia(this.params.provincia);
+          this.sucursalForm.value.provincia = this.id_provincia;
+
+          this.localidadService.ObtenerCantones(this.id_provincia).subscribe({
+            next: (localidadesResponse: LocalidadesResponse) => {
+              this.lista_cantones = localidadesResponse.data;
+              this.id_canton = this.identificarCanton(this.params.canton);
+              this.sucursalForm.value.canton = this.id_canton;
+              
+              this.localidadService.ObtenerDistritos(this.id_provincia,this.id_canton).subscribe({
+                next: (localidadesResponse: LocalidadesResponse) => {
+                  this.lista_distritos = localidadesResponse.data;
+                  this.id_distrito = this.identificarDistrito(this.params.distrito);
+                  this.sucursalForm.value.distrito = this.id_distrito;
+                  this.sucursalForm.patchValue(this.sucursalForm.value, { onlySelf: false, emitEvent: true });
+                }
+              });
+            }
+          });
+        }        
       }
     });
   }
 
+  /**
+     * Obteniene el value del selector de provincia @param provincia,
+     * guarda el nombre de la provincia localmente y procede a usar el
+     * localidadService para obtener la lista de cantones correspondiente
+     * a la provincia seleccionada por el usurio.
+     */
   seleccionarProvincia(provincia:string): void {
     this.id_provincia = provincia;
-    var index = Number(this.id_provincia) - 1;
+    const index = Number(this.id_provincia) - 1;
     this.nombre_provincia = this.lista_provincias[index].nombre;
     this.localidadService.ObtenerCantones(this.id_provincia).subscribe({
       next: (localidadesResponse: LocalidadesResponse) => {
         this.lista_cantones = localidadesResponse.data;
-        
       }  
     })
   }
 
+  /**
+     * Obteniene el value del selector de canton @param canton,
+     * guarda el nombre del canton localmente y procede a usar el
+     * localidadService para obtener la lista de distritos correspondiente
+     * al canton seleccionada por el usurio.
+     */
   seleccionarCanton(canton:string): void {
     this.id_canton = canton;
-    var index = Number(this.id_canton) - 1;
+    const index = Number(this.id_canton) - 1;
     this.nombre_canton = this.lista_cantones[index].nombre;
     this.localidadService.ObtenerDistritos(this.id_provincia,this.id_canton).subscribe({
       next: (localidadesResponse: LocalidadesResponse) => {
@@ -133,10 +171,62 @@ export class SucursalComponent implements OnInit {
     })
   }
 
+  /**
+     * Obteniene el value del selector de distrito @param distrito,
+     * guarda el nombre del distrito localmente.
+     */
   seleccionarDistrito(distrito:string): void {
     this.id_distrito = distrito;
-    var index = Number(this.id_distrito) - 1;
+    const index = Number(this.id_distrito) - 1;
     this.nombre_distrito = this.lista_distritos[index].nombre;
+  }
+
+  /**
+   * dado @param value como el string que representa el nombre de una provincia,
+   * se obtiene de la lista de provincias el elemento que haga match y se obtiene
+   * el numero de provincia que luego es convertido a string.
+   * @returns un string que representa el identificador numerico de una provincia.
+   */
+  identificarProvincia(value:string): string {
+    let numero:string = "";
+    this.lista_provincias.forEach(element => {
+      if(element.nombre === value){
+        numero = element.numero.toString();
+      }
+    });
+    return numero;
+  }
+
+  /**
+   * dado @param value como el string que representa el nombre de un canton,
+   * se obtiene de la lista de cantones el elemento que haga match y se obtiene
+   * el numero de canton que luego es convertido a string.
+   * @returns un string que representa el identificador numerico de un canton.
+   */
+  identificarCanton(value:string): string {
+    let numero:string = "";
+    this.lista_cantones.forEach(element => {
+      if(element.nombre === value){
+        numero = element.numero.toString();
+      }
+    });
+    return numero;
+  }
+
+    /**
+   * dado @param value como el string que representa el nombre de un distrito,
+   * se obtiene de la lista de distritos el elemento que haga match y se obtiene
+   * el numero de distrito que luego es convertido a string.
+   * @returns un string que representa el identificador numerico de un distrito.
+   */
+  identificarDistrito(value:string): string {
+    let numero:string = "";
+    this.lista_distritos.forEach(element => {
+      if(element.nombre === value){
+        numero = element.numero.toString();
+      }
+    });
+    return numero;
   }
 
   
@@ -187,10 +277,10 @@ export class SucursalComponent implements OnInit {
   }
 
   /**
-   * Función para armar el body que se va a enviar al servidor para actualizar o agregar un trabajador
+   * Función para armar el body que se va a enviar al servidor para actualizar o agregar una sucursal
    * con el formato respectivo.
-   * @param trabajadorFormValues Los valores que ingresó el usuario al formulario.
-   * @returns Un objeto que tiene el formato correcto para enviarlo al servidor: Trabajador.
+   * @param sucursalFormValues Los valores que ingresó el usuario al formulario.
+   * @returns Un objeto que tiene el formato correcto para enviarlo al servidor: Sucursal.
    */
    formatoSucursal(sucursalFormValues: any) {
     return this.formType === 'editar'
@@ -208,9 +298,9 @@ export class SucursalComponent implements OnInit {
         nombre_sucursal: sucursalFormValues.nombre_sucursal,
         telefono: sucursalFormValues.telefono,
         cedula_trabajador_gerente: sucursalFormValues.cedula_trabajador_gerente,
-        provincia: sucursalFormValues.provincia,
-        canton: sucursalFormValues.canton,
-        distrito: sucursalFormValues.distrito,
+        provincia: this.nombre_provincia,
+        canton: this.nombre_canton,
+        distrito: this.nombre_distrito,
         fecha_apertura: (new Date(sucursalFormValues.fecha_apertura.year, sucursalFormValues.fecha_apertura.month - 1, sucursalFormValues.fecha_apertura.day)).toISOString(),
           fecha_inicio_gerencia: (new Date(sucursalFormValues.fecha_inicio_gerencia.year, sucursalFormValues.fecha_inicio_gerencia.month - 1, sucursalFormValues.fecha_inicio_gerencia.day)).toISOString(),
         } as Sucursal);

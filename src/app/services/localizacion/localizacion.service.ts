@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import {
-  Localidad,
   LocalidadesResponse
 } from './localizacion.types'
 @Injectable({
@@ -27,7 +26,7 @@ export class LocalizacionService {
   constructor(private http: HttpClient, private router: Router) { }
 
   /**
-   * Metodo para obtener la lista de todos las localidades.
+   * Metodo para obtener la lista de todos las Provincias.
    * @returns observable del query: Observable<LocalidadesResponse[]>.
    */
    ObtenerProvincias() {
@@ -37,6 +36,10 @@ export class LocalizacionService {
     );
   }
 
+  /**
+   * Metodo para obtener la lista de todos los cantones.
+   * @returns observable del query: Observable<LocalidadesResponse[]>.
+   */
   ObtenerCantones(provincia:string) {
     return this.http.get<LocalidadesResponse>(
       `${this.localidadesUrl}/provincia/`+provincia+`/cantones`,
@@ -44,6 +47,10 @@ export class LocalizacionService {
     );
   }
 
+  /**
+   * Metodo para obtener la lista de todos los distritos.
+   * @returns observable del query: Observable<LocalidadesResponse[]>.
+   */
   ObtenerDistritos(provincia:string,canton: string) {
     return this.http.get<LocalidadesResponse>(
       `${this.localidadesUrl}/provincia/`+provincia+`/canton/`+canton+`/distritos`,
