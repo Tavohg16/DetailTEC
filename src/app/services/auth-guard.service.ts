@@ -31,15 +31,19 @@ export class AuthGuardService implements CanActivate {
       else {
         // Manejo de casos de trabajador o cliente para cada ruta
         switch (route.routeConfig?.path) {
-          case 'gestion-trabajadores':
+
+          case 'gestion-trabajadores || trabajador':
+            if (!this.loginService.isAdmin) {
+              this.router.navigate(['home']);
+            }
             return this.loginService.isAdmin;
-          case 'gestion-sucursales':
+          case 'gestion-sucursales || sucursal':
+            if (!this.loginService.isAdmin) {
+              this.router.navigate(['home']);
+            }
             return this.loginService.isAdmin;
           default:
             return true;
-          
-
-          
         }
       }
     }

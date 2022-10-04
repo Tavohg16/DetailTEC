@@ -1,0 +1,154 @@
+<div class="container text-center">
+    <div class="mt-5">
+      <div class="card w-75 mx-auto">
+        <div class="card-header">
+          <h2>{{ title }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="container text-center">
+            <form [formGroup]="sucursalForm" (ngSubmit)="onSubmit()">
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="nombre_sucursal">Nombre de la sucursal</label>
+                  <input
+                    type="text"
+                    formControlName="nombre_sucursal"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': trabajadorFormControls['nombre_sucursal'].errors
+                    }"
+                  />
+                </div>
+                <div class="col">
+                  <label for="telefono">Telefono</label>
+                  <input
+                    type="text"
+                    formControlName="telefono"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': trabajadorFormControls['telefono'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="cedula_trabajador_gerente">Cedula del gerente</label>
+                  <input
+                    type="text"
+                    formControlName="cedula_trabajador_gerente"
+                    class="form-control mt-2 w-50 mx-auto"
+                    [ngClass]="{
+                      'is-invalid':
+                        trabajadorFormControls['cedula_trabajador_gerente'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="provincia">Provincia</label>
+                  <select
+                    #provincia
+                    formControlName="provincia"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': trabajadorFormControls['provincia'].errors}"
+                      (change)="seleccionarProvincia(provincia.value)"
+                  >
+                    <option *ngFor="let provincia of lista_provincias" [value]="provincia.numero">
+                      {{ provincia.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="canton">Canton</label>
+                  <select
+                    #canton
+                    formControlName="canton"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': trabajadorFormControls['canton'].errors}"
+                      (change)="seleccionarCanton(canton.value)"
+                  >
+                    <option *ngFor="let canton of lista_cantones" [value]="canton.numero">
+                      {{ canton.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="distrito">Distrito</label>
+                  <select
+                    #distrito
+                    formControlName="distrito"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': trabajadorFormControls['distrito'].errors}"
+                      (change)="seleccionarDistrito(distrito.value)"
+                  >
+                    <option *ngFor="let distrito of lista_distritos" [value]="distrito.numero">
+                      {{ distrito.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-5">
+                <div class="col">
+                  <label for="fecha_apertura">Fecha de apertura</label>
+                  <div class="input-group mt-2">
+                    <input
+                      formControlName="fecha_apertura"
+                      class="form-control"
+                      placeholder="aaaa-mm-dd"
+                      name="dpfi"
+                      ngbDatepicker
+                      #dfi="ngbDatepicker"
+                    />
+                    <button
+                      class="btn btn-outline-secondary calendar"
+                      (click)="dfi.toggle()"
+                      type="button"
+                    >
+                      <i class="fa-solid fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="col">
+                  <label for="fecha_inicio_gerencia">Fecha de incio de gerencia</label>
+                  <div class="input-group mt-2">
+                    <input
+                      formControlName="fecha_inicio_gerencia"
+                      class="form-control"
+                      placeholder="aaaa-mm-dd"
+                      name="dpfn"
+                      ngbDatepicker
+                      #dfn="ngbDatepicker"
+                    />
+                    <button
+                      class="btn btn-outline-secondary calendar"
+                      (click)="dfn.toggle()"
+                      type="button"
+                    >
+                      <i class="fa-solid fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-5">
+                <button
+                  [disabled]="loading || sucursalForm.invalid"
+                  class="btn btn-primary"
+                >
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,7 +1,7 @@
 <div class="container text-center">
     <div class="row align-items-center mt-5">
       <div class="col align-self-center">
-        <!-- <button type="button" class="btn btn-primary bg-white text-dark" >Crear sucursal</button> -->
+        <button type="button" class="btn btn-primary bg-white text-dark" (click)="crearSucursal()">Crear sucursal</button>
       </div>
     </div>
     <div class="row">
@@ -24,19 +24,18 @@
             <tr *ngFor="let sucursal of sucursales">
               <th>{{ sucursal.nombre_sucursal }}</th>
               <td>{{ sucursal.telefono }}</td>
-              <td>{{ nombreCompleto(sucursal)}}</td>
               <td>{{ sucursal.cedula_trabajador_gerente }}</td>
               <td>{{ sucursal.provincia }}</td>
               <td>{{ sucursal.canton }}</td>
               <td>{{ fechaApertura(sucursal) }}</td>
               <td>{{ fechaInicioGerencia(sucursal) }}</td>
               <td>
-                <!-- <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" (click)="editarSucursal(sucursal)">
                   <i class="fa-solid fa-pen-to-square"></i>
-                </button> -->
+                </button>
               </td>
               <td>
-                <button type="button" class="btn btn-primary border-danger bg-transparent" (click)="eliminarSucursal(sucursal.nombre_sucursal)">
+                <button type="button" class="btn btn-primary border-danger bg-transparent" (click)="borrarSucursal(sucursal.nombre_sucursal)">
                   <i class="fa-solid fa-trash"></i>
                 </button>
               </td>
