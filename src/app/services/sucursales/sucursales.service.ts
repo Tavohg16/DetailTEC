@@ -39,11 +39,29 @@ export class SucursalesService {
     );
   }
 
+  crearSucursal(sucursal: Sucursal) {
+    const body = JSON.stringify(sucursal);
+    return this.http.post<SucursalResponse>(
+      this.sucursalesUrl,
+      body,
+      this.httpOptions
+    );
+  }
+
+  editarSucursal(sucursal: Sucursal) {
+    const body = JSON.stringify(sucursal);
+    return this.http.patch<SucursalResponse>(
+      this.sucursalesUrl,
+      body,
+      this.httpOptions
+    );
+  }
+
   /**
    * Metodo borrar una sucursal.
    * @returns observable del query: Observable<SucursalesResponse[]>.
    */
-   borrarTrabajador(nombre_sucursal: string) {
+   borrarSucursal(nombre_sucursal: string) {
     const body = JSON.stringify({nombre_sucursal});
     return this.http.delete<SucursalResponse>(
       this.sucursalesUrl,

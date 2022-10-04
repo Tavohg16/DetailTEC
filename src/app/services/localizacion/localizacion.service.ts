@@ -12,7 +12,7 @@ import {
 })
 export class LocalizacionService {
   // Definiendo ruta a la que se hara los request http relacionados a las localidades
-  private localidadesUrl: string = `https://api.pruebayerror.com/locaciones/v1/`;
+  private localidadesUrl: string = `https://api.pruebayerror.com/locaciones/v1`;
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -30,9 +30,23 @@ export class LocalizacionService {
    * Metodo para obtener la lista de todos las localidades.
    * @returns observable del query: Observable<LocalidadesResponse[]>.
    */
-   ObtenerProvinvias() {
+   ObtenerProvincias() {
     return this.http.get<LocalidadesResponse>(
       `${this.localidadesUrl}/provincias`,
+      this.httpOptions
+    );
+  }
+
+  ObtenerCantones(provincia:string) {
+    return this.http.get<LocalidadesResponse>(
+      `${this.localidadesUrl}/provincia/`+provincia+`/cantones`,
+      this.httpOptions
+    );
+  }
+
+  ObtenerDistritos(provincia:string,canton: string) {
+    return this.http.get<LocalidadesResponse>(
+      `${this.localidadesUrl}/provincia/`+provincia+`/canton/`+canton+`/distritos`,
       this.httpOptions
     );
   }
