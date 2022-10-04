@@ -39,6 +39,10 @@ export class SucursalesService {
     );
   }
 
+  /**
+   * Metodo crear una sucursal.
+   * @returns observable del query: Observable<SucursalResponse[]>.
+   */
   crearSucursal(sucursal: Sucursal) {
     const body = JSON.stringify(sucursal);
     return this.http.post<SucursalResponse>(
@@ -48,6 +52,10 @@ export class SucursalesService {
     );
   }
 
+  /**
+   * Metodo editar una sucursal.
+   * @returns observable del query: Observable<SucursalResponse[]>.
+   */
   editarSucursal(sucursal: Sucursal) {
     const body = JSON.stringify(sucursal);
     return this.http.patch<SucursalResponse>(
