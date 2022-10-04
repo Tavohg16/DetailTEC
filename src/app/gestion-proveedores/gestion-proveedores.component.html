@@ -1,0 +1,46 @@
+<div class="container text-center">
+    <div class="row align-items-center mt-5">
+      <div class="col align-self-center">
+        <!-- <button type="button" class="btn btn-primary bg-white text-dark" >Crear proveedor</button> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Cedula juridica</th>
+              <th>Telefono</th>
+              <th>Nombre del proveedor</th>
+              <th>Provincia</th>
+              <th>Canton</th>
+              <th>Distrito</th>
+              <th>Correo electronico</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let proveedor of proveedores">
+              <th>{{ proveedor.cedula_juridica_proveedor }}</th>
+              <td>{{ proveedor.telefono }}</td>
+              <td>{{ proveedor.nombre }}</td>
+              <td>{{ proveedor.provincia }}</td>
+              <td>{{ proveedor.canton }}</td>
+              <td>{{ proveedor.distrito }}</td>
+              <td>{{ proveedor.correo_electronico }}</td>
+              <td>
+                <!-- <button type="button" class="btn btn-primary">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button> -->
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary border-danger bg-transparent" (click)="borrarProveedor(proveedor.cedula_juridica_proveedor)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
