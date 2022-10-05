@@ -42,7 +42,7 @@ export class SucursalComponent implements OnInit {
 
     
     /**
-     * Obteniendo parámetros del routing para saber si se está creando o editando un trabajador
+     * Obteniendo parámetros del routing para saber si se está creando o editando una sucursal
      * y así armar los formularios respectivamente.
      */
      this.params = router.getCurrentNavigation()?.extras.state;
