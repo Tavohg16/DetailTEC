@@ -38,7 +38,6 @@ export class GestionProveedoresComponent implements OnInit {
               );
             }
           );
-          this.proveedores = proveedoresResponse.proveedores
         } else {
           alert('Error al obtener proveedores.');
         }

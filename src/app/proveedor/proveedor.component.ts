@@ -265,7 +265,7 @@ export class ProveedorComponent implements OnInit {
    formatoProveedor(proveedorFormValues: any) {
     return this.formType === 'editar'
       ? ({
-          cedula_juridica_proveedor: proveedorFormValues.cedula_juridica_proveedor,
+          cedula_juridica_proveedor: this.params.cedula_juridica_proveedor,
           nombre: proveedorFormValues.nombre,
           telefono: proveedorFormValues.telefono,
           provincia: this.nombre_provincia,
