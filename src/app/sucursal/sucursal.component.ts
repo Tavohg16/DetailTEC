@@ -188,6 +188,7 @@ export class SucursalComponent implements OnInit {
    * @returns un string que representa el identificador numerico de una provincia.
    */
   identificarProvincia(value:string): string {
+    this.nombre_provincia = value;
     let numero:string = "";
     this.lista_provincias.forEach(element => {
       if(element.nombre === value){
@@ -204,6 +205,7 @@ export class SucursalComponent implements OnInit {
    * @returns un string que representa el identificador numerico de un canton.
    */
   identificarCanton(value:string): string {
+    this.nombre_canton = value;
     let numero:string = "";
     this.lista_cantones.forEach(element => {
       if(element.nombre === value){
@@ -220,6 +222,7 @@ export class SucursalComponent implements OnInit {
    * @returns un string que representa el identificador numerico de un distrito.
    */
   identificarDistrito(value:string): string {
+    this.nombre_distrito = value;
     let numero:string = "";
     this.lista_distritos.forEach(element => {
       if(element.nombre === value){
@@ -288,11 +291,11 @@ export class SucursalComponent implements OnInit {
           nombre_sucursal: sucursalFormValues.nombre_sucursal,
           telefono: sucursalFormValues.telefono,
           cedula_trabajador_gerente: sucursalFormValues.cedula_trabajador_gerente,
-          provincia: sucursalFormValues.provincia,
-          canton: sucursalFormValues.canton,
-          distrito: sucursalFormValues.distrito,
-          fecha_apertura: (new Date(sucursalFormValues.fechaAperturaSucursal.year, sucursalFormValues.fechaAperturaSucursal.month - 1, sucursalFormValues.fechaAperturaSucursal.day)).toISOString(),
-          fecha_inicio_gerencia: (new Date(sucursalFormValues.fechaInicioGerencia.year, sucursalFormValues.fechaInicioGerencia.month - 1, sucursalFormValues.fechaInicioGerencia.day)).toISOString(),
+          provincia: this.nombre_provincia,
+          canton: this.nombre_canton,
+          distrito: this.nombre_distrito,
+          fecha_apertura: (new Date(sucursalFormValues.fecha_apertura.year, sucursalFormValues.fecha_apertura.month - 1, sucursalFormValues.fecha_apertura.day)).toISOString(),
+          fecha_inicio_gerencia: (new Date(sucursalFormValues.fecha_inicio_gerencia.year, sucursalFormValues.fecha_inicio_gerencia.month - 1, sucursalFormValues.fecha_inicio_gerencia.day)).toISOString(),
         } as Sucursal)
       : ({
         nombre_sucursal: sucursalFormValues.nombre_sucursal,
