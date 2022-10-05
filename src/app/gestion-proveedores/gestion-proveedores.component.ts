@@ -31,7 +31,14 @@ export class GestionProveedoresComponent implements OnInit {
     this.proveedoresService.todosProveedores().subscribe({
       next: (proveedoresResponse: ProveedoresResponse) => {
         if (proveedoresResponse.exito) {
-          this.proveedores = proveedoresResponse.proveedores;
+          this.proveedores = proveedoresResponse.proveedores.sort(
+            (proveedorA, proveedorB) => {
+              return proveedorA.cedula_juridica_proveedor.localeCompare(
+                proveedorB.cedula_juridica_proveedor
+              );
+            }
+          );
+          this.proveedores = proveedoresResponse.proveedores
         } else {
           alert('Error al obtener proveedores.');
         }
@@ -58,6 +65,16 @@ export class GestionProveedoresComponent implements OnInit {
       },
     });
   }
+    /**
+   * Función para navegar a la pantalla de crear proveedor.
+   */
+     protected crearProveedor() {
+      this.router.navigate(['proveedor']);
+    }
+  
+    protected editarProveedor(proveedor: Proveedor) {
+      this.router.navigate(['proveedor'], {state: proveedor});
+    }
 
 
 

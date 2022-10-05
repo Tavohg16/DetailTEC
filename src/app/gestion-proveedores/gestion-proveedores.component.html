@@ -1,7 +1,7 @@
 <div class="container text-center">
     <div class="row align-items-center mt-5">
       <div class="col align-self-center">
-        <!-- <button type="button" class="btn btn-primary bg-white text-dark" >Crear proveedor</button> -->
+        <button type="button" class="btn btn-primary bg-white text-dark" (click)="crearProveedor()">Crear proveedor</button>
       </div>
     </div>
     <div class="row">
@@ -29,9 +29,9 @@
               <td>{{ proveedor.distrito }}</td>
               <td>{{ proveedor.correo_electronico }}</td>
               <td>
-                <!-- <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" (click)="editarProveedor(proveedor)">
                   <i class="fa-solid fa-pen-to-square"></i>
-                </button> -->
+                </button>
               </td>
               <td>
                 <button type="button" class="btn btn-primary border-danger bg-transparent" (click)="borrarProveedor(proveedor.cedula_juridica_proveedor)">
