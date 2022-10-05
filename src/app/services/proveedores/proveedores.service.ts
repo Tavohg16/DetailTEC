@@ -50,4 +50,29 @@ export class ProveedoresService {
       {...this.httpOptions, body }
     );
   }
+    /**
+   * Metodo crear un proveedor.
+   * @returns observable del query: Observable<ProveedorResponse[]>.
+   */
+     crearProveedor(proveedor: Proveedor) {
+      const body = JSON.stringify(proveedor);
+      return this.http.post<ProveedorResponse>(
+        this.proveedoresUrl,
+        body,
+        this.httpOptions
+      );
+    }
+  
+    /**
+     * Metodo editar un proveedor.
+     * @returns observable del query: Observable<ProveedorResponse[]>.
+     */
+    editarProveedor(proveedor: Proveedor) {
+      const body = JSON.stringify(proveedor);
+      return this.http.patch<ProveedorResponse>(
+        this.proveedoresUrl,
+        body,
+        this.httpOptions
+      );
+    }
 }

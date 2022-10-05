@@ -10,6 +10,7 @@ import {
 import { TrabajadorComponent } from './trabajador/trabajador.component';
 import { SucursalComponent } from './sucursal/sucursal.component';
 import { GestionProveedoresComponent } from './gestion-proveedores/gestion-proveedores.component';
+import { ProveedorComponent } from './proveedor/proveedor.component';
 /**
  * Definiendo rutas a componentes
  */
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'gestion-sucursales', component: GestionSucursalesComponent, pathMatch: 'full'},
   { path: 'sucursal', component: SucursalComponent ,  pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'gestion-proveedores', component: GestionProveedoresComponent, pathMatch: 'full'},
+ { path: 'proveedor', component: ProveedorComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'home'}
 ];
 
