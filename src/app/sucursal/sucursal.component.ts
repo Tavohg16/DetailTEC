@@ -235,7 +235,7 @@ export class SucursalComponent implements OnInit {
   
 
   // Getter para acceder facilmente a los form fields
-  get trabajadorFormControls() {
+  get sucursalFormControls() {
     return this.sucursalForm.controls;
   }
 
