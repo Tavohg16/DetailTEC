@@ -98,6 +98,14 @@ export class GestionSucursalesComponent implements OnInit {
     this.router.navigate(['sucursal'], {state: sucursal});
   }
 
+  /**
+   * Esta función es para dar un formato al nombre del trabajador gerente a partir de varios atributos.
+   * @param sucursal La sucursal de la cual se quiere conocer el nombre del gerente.
+   * @returns Nombre del gerente: string.
+   */
+   protected nombreCompleto(sucursal: Sucursal): string {
+    return `${sucursal.nombre_trabajador_gerente} ${sucursal.primer_apellido_trabajador_gerente}`;
+  }
   
 
 }
