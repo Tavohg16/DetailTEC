@@ -19,10 +19,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'gestion-trabajadores', component: GestionTrabajadoresComponent ,  pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'trabajador', component: TrabajadorComponent ,  pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'gestion-sucursales', component: GestionSucursalesComponent, pathMatch: 'full'},
+  { path: 'gestion-sucursales', component: GestionSucursalesComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'sucursal', component: SucursalComponent ,  pathMatch: 'full', canActivate: [AuthGuard] },
-  { path: 'gestion-proveedores', component: GestionProveedoresComponent, pathMatch: 'full'},
- { path: 'proveedor', component: ProveedorComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'gestion-proveedores', component: GestionProveedoresComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'proveedor', component: ProveedorComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'home'}
 ];
 
