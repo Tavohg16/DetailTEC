@@ -13,7 +13,7 @@ import {
   providedIn: 'root'
 })
 export class SucursalesService {
-  // Definiendo ruta a la que se hara los request http relacionados a las sucursales.
+  // Definiendo ruta a la que se hara los request http relacionados a las sucursales
   private sucursalesUrl: string = `${environment.apiUrl}/manage/office`;
 
   private httpOptions = {
@@ -35,6 +35,32 @@ export class SucursalesService {
    todasSucursales() {
     return this.http.get<SucursalesResponse>(
       `${this.sucursalesUrl}/all`,
+      this.httpOptions
+    );
+  }
+
+  /**
+   * Metodo crear una sucursal.
+   * @returns observable del query: Observable<SucursalResponse[]>.
+   */
+  crearSucursal(sucursal: Sucursal) {
+    const body = JSON.stringify(sucursal);
+    return this.http.post<SucursalResponse>(
+      this.sucursalesUrl,
+      body,
+      this.httpOptions
+    );
+  }
+
+  /**
+   * Metodo editar una sucursal.
+   * @returns observable del query: Observable<SucursalResponse[]>.
+   */
+  editarSucursal(sucursal: Sucursal) {
+    const body = JSON.stringify(sucursal);
+    return this.http.patch<SucursalResponse>(
+      this.sucursalesUrl,
+      body,
       this.httpOptions
     );
   }

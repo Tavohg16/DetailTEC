@@ -37,7 +37,7 @@ export class AuthGuardService implements CanActivate {
               this.router.navigate(['home']);
             }
             return this.loginService.isAdmin;
-          case 'gestion-sucursales':
+          case 'gestion-sucursales || sucursal':
             if (!this.loginService.isAdmin) {
               this.router.navigate(['home']);
             }

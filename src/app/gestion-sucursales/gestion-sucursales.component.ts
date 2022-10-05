@@ -49,15 +49,7 @@ export class GestionSucursalesComponent implements OnInit {
     });
   }
 
-  /**
-   * Esta función es para dar un formato al nombre del trabajador gerente a partir de varios atributos.
-   * @param sucursal La sucursal de la cual se quiere conocer el nombre del gerente.
-   * @returns Nombre del gerente: string.
-   */
-   protected nombreCompleto(sucursal: Sucursal): string {
-    return `${sucursal.nombre_trabajador_gerente} ${sucursal.primer_apellido_trabajador_gerente}`;
-  }
-
+  
   /**
    * Esta función es para dar un formato a la de inicio de gerencia a partir de varios atributos.
    * @param sucursal la sucursal de la cual se quiere obtener la fecha de inicio de gerencia actual.
@@ -95,6 +87,25 @@ export class GestionSucursalesComponent implements OnInit {
     });
   }
 
+  /**
+   * Función para navegar a la pantalla de crear sucursal.
+   */
+   protected crearSucursal() {
+    this.router.navigate(['sucursal']);
+  }
+
+  protected editarSucursal(sucursal: Sucursal) {
+    this.router.navigate(['sucursal'], {state: sucursal});
+  }
+
+  /**
+   * Esta función es para dar un formato al nombre del trabajador gerente a partir de varios atributos.
+   * @param sucursal La sucursal de la cual se quiere conocer el nombre del gerente.
+   * @returns Nombre del gerente: string.
+   */
+   protected nombreCompleto(sucursal: Sucursal): string {
+    return `${sucursal.nombre_trabajador_gerente} ${sucursal.primer_apellido_trabajador_gerente}`;
+  }
   
 
 }

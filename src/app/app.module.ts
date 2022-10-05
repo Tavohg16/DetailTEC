@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { GestionTrabajadoresComponent } from './gestion-trabajadores/gestion-trabajadores.component';
 import { TrabajadorComponent } from './trabajador/trabajador.component';
 import { GestionSucursalesComponent } from './gestion-sucursales/gestion-sucursales.component';
+import { SucursalComponent } from './sucursal/sucursal.component';
 import {GestionProveedoresComponent} from './gestion-proveedores/gestion-proveedores.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import {GestionProveedoresComponent} from './gestion-proveedores/gestion-proveed
     GestionTrabajadoresComponent,
     TrabajadorComponent,
     GestionSucursalesComponent,
+    SucursalComponent,
     GestionProveedoresComponent,
   ],
   imports: [
