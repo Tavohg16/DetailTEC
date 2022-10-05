@@ -211,7 +211,7 @@ export class ProveedorComponent implements OnInit {
 
 
   // Getter para acceder facilmente a los form fields
-  get trabajadorFormControls() {
+  get proveedorFormControls() {
     return this.proveedorForm.controls;
   }
 

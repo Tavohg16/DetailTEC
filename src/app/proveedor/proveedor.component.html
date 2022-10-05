@@ -15,7 +15,7 @@
                     formControlName="cedula_juridica_proveedor"
                     class="form-control mt-2"
                     [ngClass]="{
-                      'is-invalid': trabajadorFormControls['cedula_juridica_proveedor'].errors
+                      'is-invalid': proveedorFormControls['cedula_juridica_proveedor'].errors
                     }"
                   />
                 </div>
@@ -26,7 +26,7 @@
                     formControlName="nombre"
                     class="form-control mt-2"
                     [ngClass]="{
-                      'is-invalid': trabajadorFormControls['nombre'].errors
+                      'is-invalid': proveedorFormControls['nombre'].errors
                     }"
                   />
                 </div>
@@ -40,7 +40,7 @@
                     class="form-control mt-2 w-50 mx-auto"
                     [ngClass]="{
                       'is-invalid':
-                        trabajadorFormControls['telefono'].errors
+                        proveedorFormControls['telefono'].errors
                     }"
                   />
                 </div>
@@ -53,7 +53,7 @@
                     formControlName="provincia"
                     class="form-select form-control text-center mt-2 mx-auto"
                     [ngClass]="{
-                      'is-invalid': trabajadorFormControls['provincia'].errors}"
+                      'is-invalid': proveedorFormControls['provincia'].errors}"
                       (change)="seleccionarProvincia(provincia.value)"
                   >
                     <option *ngFor="let provincia of lista_provincias" [value]="provincia.numero">
@@ -68,7 +68,7 @@
                     formControlName="canton"
                     class="form-select form-control text-center mt-2 mx-auto"
                     [ngClass]="{
-                      'is-invalid': trabajadorFormControls['canton'].errors}"
+                      'is-invalid': proveedorFormControls['canton'].errors}"
                       (change)="seleccionarCanton(canton.value)"
                   >
                     <option *ngFor="let canton of lista_cantones" [value]="canton.numero">
@@ -83,7 +83,7 @@
                     formControlName="distrito"
                     class="form-select form-control text-center mt-2 mx-auto"
                     [ngClass]="{
-                      'is-invalid': trabajadorFormControls['distrito'].errors}"
+                      'is-invalid': proveedorFormControls['distrito'].errors}"
                       (change)="seleccionarDistrito(distrito.value)"
                   >
                     <option *ngFor="let distrito of lista_distritos" [value]="distrito.numero">
@@ -101,7 +101,7 @@
                     class="form-control mt-2 w-50 mx-auto"
                     [ngClass]="{
                       'is-invalid':
-                        trabajadorFormControls['correo_electronico'].errors
+                        proveedorFormControls['correo_electronico'].errors
                     }"
                   />
                 </div>
