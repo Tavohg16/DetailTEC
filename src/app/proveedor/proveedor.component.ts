@@ -221,7 +221,7 @@ export class ProveedorComponent implements OnInit {
       return;
     }
 
-     // Query a través del trabajadores service para agregar o editar proveedor.
+     // Query a través del proveedores service para agregar o editar proveedor.
     this.loading = true;
     if (this.formType == 'crear') {
       this.proveedoresService
