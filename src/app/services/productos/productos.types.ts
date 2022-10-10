@@ -8,7 +8,7 @@ export interface Producto {
     costo: Number;
     marca: string;
     cedula_juridica_proveedor: string;
-    nombre_proveedor: string;
+    nombre_proveedor?: string;
 }
 
 export interface ProductoResponse {
