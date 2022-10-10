@@ -28,7 +28,7 @@ export class ProductosService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  /**
+   /**
    * Metodo para obtener la lista de todos los productos.
    * @returns observable del query: Observable<ProductosResponse[]>.
    */
@@ -39,7 +39,7 @@ export class ProductosService {
     );
   }
 
-  /**
+   /**
    * Metodo borrar un producto.
    * @returns observable del query: Observable<ProductosResponse[]>.
    */
@@ -48,6 +48,30 @@ export class ProductosService {
     return this.http.delete<ProductoResponse>(
       this.productosUrl,
       {...this.httpOptions, body }
+    );
+  }
+  /**
+  * Metodo crear un producto.
+  * @returns observable del query: Observable<ProductoResponse[]>.
+  */
+  crearProducto(producto: Producto) {
+    const body = JSON.stringify(producto);
+    return this.http.post<ProductoResponse>(
+      this.productosUrl,
+      body,
+      this.httpOptions
+    );
+  }
+  /**
+  * Metodo editar un producto.
+  * @returns observable del query: Observable<ProductoResponse[]>.
+  */
+  editarProducto(producto: Producto) {
+    const body = JSON.stringify(producto);
+    return this.http.patch<ProductoResponse>(
+      this.productosUrl,
+      body,
+      this.httpOptions
     );
   }
 }

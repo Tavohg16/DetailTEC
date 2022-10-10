@@ -64,4 +64,11 @@ export class GestionProductosComponent implements OnInit {
       },
     });
   }
+  protected crearProducto() {
+    this.router.navigate(['producto']);
+  }
+
+  protected editarProducto(producto: Producto) {
+    this.router.navigate(['producto'], {state: producto});
+  }
 }

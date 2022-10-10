@@ -1,0 +1,79 @@
+<div class="container text-center">
+    <div class="mt-5">
+      <div class="card w-75 mx-auto">
+        <div class="card-header">
+          <h2>{{ title }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="container text-center">
+            <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="nombre_insumo">Nombre Insumo</label>
+                  <input
+                    type="text"
+                    formControlName="nombre_insumo"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': productoFormControls['nombre_insumo'].errors
+                    }"
+                  />
+                </div>
+                <div class="col">
+                  <label for="costo">Costo</label>
+                  <input
+                    type="text"
+                    formControlName="costo"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': productoFormControls['costo'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="marca">Marca</label>
+                  <input
+                    type="text"
+                    formControlName="marca"
+                    class="form-control mt-2 w-50 mx-auto"
+                    [ngClass]="{
+                      'is-invalid':
+                        productoFormControls['marca'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="cedula_juridica_proveedor">Cedula Juridica</label>
+                  <input
+                    type="text"
+                    formControlName="cedula_juridica_proveedor"
+                    class="form-control mt-2 w-50 mx-auto"
+                    [ngClass]="{
+                      'is-invalid':
+                        productoFormControls['cedula_juridica_proveedor'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="form-group mt-5">
+                <button
+                  [disabled]="loading || productoForm.invalid"
+                  class="btn btn-primary"
+                >
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
