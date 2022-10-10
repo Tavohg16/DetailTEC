@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
      {
       title: "Gestion de Insumos",
       icon: "fa-solid fa-barcode",
-      route: ""
+      route: "gestion-productos"
     },
     {
       title: "Gestion de Lavados",
