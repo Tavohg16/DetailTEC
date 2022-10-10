@@ -119,7 +119,6 @@ export class ProductoComponent implements OnInit {
         costo: productoFormValues.costo,
         marca: productoFormValues.marca,
         cedula_juridica_proveedor: productoFormValues.cedula_juridica_proveedor,
-        //nombre_proveedor: productoFormValues.nombre_proveedor,
         } as Producto);
   }
 }
