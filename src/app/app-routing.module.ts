@@ -13,6 +13,8 @@ import { GestionProveedoresComponent } from './gestion-proveedores/gestion-prove
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { GestionProductosComponent } from './gestion-productos/gestion-productos.component';
 import { ProductoComponent } from './producto/producto.component';
+import { GestionLavadosComponent } from './gestion-lavados/gestion-lavados.component';
+
 /**
  * Definiendo rutas a componentes
  */
@@ -27,6 +29,7 @@ const routes: Routes = [
   { path: 'proveedor', component: ProveedorComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'gestion-productos', component: GestionProductosComponent, pathMatch: 'full'},
   { path: 'producto', component: ProductoComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'gestion-lavados', component: GestionLavadosComponent, pathMatch: 'full'},
   { path: '**', redirectTo: 'home'}
 ];
 
