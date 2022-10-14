@@ -30,8 +30,8 @@
               <td>{{ cliente.puntos_acum }}</td>
               <td>{{ cliente.puntos_obt }}</td>
               <td>{{ cliente.puntos_redim }}</td>
-              <td>{{ direcciones(cliente) }}</td>
-              <td>{{ telefonos(cliente) }}</td>
+              <td><p *ngFor="let direccion of cliente.direcciones">{{ direccionFormato(direccion) }}</p></td>
+              <td><p *ngFor="let telefono of cliente.telefonos">{{ telefono }}</p></td>
               <td>
                 <button type="button" class="btn btn-primary" (click)="editarCliente(cliente)">
                   <i class="fa-solid fa-pen-to-square"></i>

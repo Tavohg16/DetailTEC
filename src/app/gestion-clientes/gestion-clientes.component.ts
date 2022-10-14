@@ -5,6 +5,7 @@ import {
   Cliente,
   ClientesResponse,
   ClienteResponse,
+  Direccion,
 } from '../services/clientes/clientes.types';
 
 @Component({
@@ -84,15 +85,7 @@ export class GestionClientesComponent implements OnInit {
     return `${cliente.nombre} ${cliente.primer_apellido}`;
   }
 
-  protected direcciones(cliente: Cliente): string {
-    return cliente.direcciones.length === 1
-      ? `${cliente.direcciones[0].distrito}, ${cliente.direcciones[0].canton}, ${cliente.direcciones[0].provincia}`
-      : `${cliente.direcciones[0].distrito}, ${cliente.direcciones[0].canton}, ${cliente.direcciones[0].provincia} & ${cliente.direcciones[1].distrito}, ${cliente.direcciones[1].canton}, ${cliente.direcciones[1].provincia}`;
-  }
-
-  protected telefonos(cliente: Cliente): string {
-    return cliente.telefonos.length === 1
-      ? `${cliente.telefonos[0]}`
-      : `${cliente.telefonos[0]} ${cliente.telefonos[1]}`;
+  protected direccionFormato(direccion: Direccion): string {
+    return `${direccion.distrito}, ${direccion.canton}, ${direccion.provincia}`;
   }
 }
