@@ -1,0 +1,50 @@
+<div class="container text-center">
+    <div class="row align-items-center mt-5">
+      <div class="col align-self-center">
+        <button type="button" class="btn btn-primary bg-white text-dark" (click)="crearCliente()">Crear cliente</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Cédula cliente</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Usuario</th>
+              <th>Ptos. Actuales</th>
+              <th>Ptos. Obtenidos</th>
+              <th>Ptos. Redimidos</th>
+              <th>Direcciones</th>
+              <th>Teléfonos</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cliente of clientes">
+              <th>{{ cliente.cedula_cliente }}</th>
+              <td>{{ nombreCompleto(cliente) }}</td>
+              <td>{{ cliente.correo_cliente }}</td>
+              <td>{{ cliente.usuario }}</td>
+              <td>{{ cliente.puntos_acum }}</td>
+              <td>{{ cliente.puntos_obt }}</td>
+              <td>{{ cliente.puntos_redim }}</td>
+              <td>{{ direcciones(cliente) }}</td>
+              <td>{{ telefonos(cliente) }}</td>
+              <td>
+                <button type="button" class="btn btn-primary" (click)="editarCliente(cliente)">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary border-danger bg-transparent" (click)="borrarCliente(cliente.cedula_cliente)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

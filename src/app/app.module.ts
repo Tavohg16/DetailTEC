@@ -17,6 +17,8 @@ import { GestionProveedoresComponent } from './gestion-proveedores/gestion-prove
 import { ProveedorComponent } from './proveedor/proveedor.component';
 import { GestionProductosComponent } from './gestion-productos/gestion-productos.component';
 import { ProductoComponent } from './producto/producto.component';
+import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ProductoComponent } from './producto/producto.component';
     ProveedorComponent,
     GestionProductosComponent,
     ProductoComponent,
+    GestionClientesComponent,
+    ClienteComponent,
   ],
   imports: [
     BrowserModule,
