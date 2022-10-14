@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     {
       title: "Gestion de Lavados",
       icon: "fa-solid fa-car",
-      route: ""
+      route: "gestion-lavados"
     },
     {
       title: "Gestion de Clientes",
