@@ -4,9 +4,7 @@ import { GestionTrabajadoresComponent } from './gestion-trabajadores/gestion-tra
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GestionSucursalesComponent } from './gestion-sucursales/gestion-sucursales.component';
-import { 
-  AuthGuardService as AuthGuard 
-} from './services/auth-guard.service';
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { TrabajadorComponent } from './trabajador/trabajador.component';
 import { SucursalComponent } from './sucursal/sucursal.component';
 import { GestionProveedoresComponent } from './gestion-proveedores/gestion-proveedores.component';
@@ -14,6 +12,7 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import { GestionProductosComponent } from './gestion-productos/gestion-productos.component';
 import { ProductoComponent } from './producto/producto.component';
 import { GestionLavadosComponent } from './gestion-lavados/gestion-lavados.component';
+import { LavadoComponent } from './lavado/lavado.component';
 
 /**
  * Definiendo rutas a componentes
@@ -30,6 +29,7 @@ const routes: Routes = [
   { path: 'gestion-productos', component: GestionProductosComponent, pathMatch: 'full'},
   { path: 'producto', component: ProductoComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'gestion-lavados', component: GestionLavadosComponent, pathMatch: 'full'},
+  { path: 'lavado', component: LavadoComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'home'}
 ];
 

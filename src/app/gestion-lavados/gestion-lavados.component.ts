@@ -66,4 +66,10 @@ export class GestionLavadosComponent implements OnInit {
       },
     });
   }
+  protected crearLavado() {
+    this.router.navigate(['lavado']);
+  }
+  protected editarLavado(lavado: Lavado) {
+    this.router.navigate(['lavado'], {state: lavado});
+  }
 }

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +17,7 @@ import { ProveedorComponent } from './proveedor/proveedor.component';
 import { GestionProductosComponent } from './gestion-productos/gestion-productos.component';
 import { ProductoComponent } from './producto/producto.component';
 import { GestionLavadosComponent } from './gestion-lavados/gestion-lavados.component';
+import { LavadoComponent } from './lavado/lavado.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +33,7 @@ import { GestionLavadosComponent } from './gestion-lavados/gestion-lavados.compo
     GestionProductosComponent,
     ProductoComponent,
     GestionLavadosComponent,
+    LavadoComponent,
   ],
   imports: [
     BrowserModule,
