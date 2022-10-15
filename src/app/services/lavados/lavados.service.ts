@@ -51,4 +51,28 @@ export class LavadosService {
       {...this.httpOptions, body }
     );
   }
+  /**
+  * Metodo crear un producto.
+  * @returns observable del query: Observable<LavadoResponse[]>.
+  */
+    crearLavado(lavado: Lavado) {
+    const body = JSON.stringify(lavado);
+    return this.http.post<LavadoResponse>(
+      this.lavadosUrl,
+      body,
+      this.httpOptions
+    );
+  }
+  /**
+  * Metodo editar un lavado.
+  * @returns observable del query: Observable<LavadoResponse[]>.
+  */ 
+  editarLavado(lavado: Lavado){
+    const body = JSON.stringify(lavado);
+    return this.http.patch<LavadoResponse>(
+      this.lavadosUrl,
+      body,
+      this.httpOptions
+    );
+  }
 }
