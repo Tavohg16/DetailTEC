@@ -1,0 +1,47 @@
+<div class="container text-center">
+    <div class="row align-items-center mt-5">
+      <div class="col align-self-center">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID de la Cita</th>
+              <th>Nombre Completo del Cliente</th>
+              <th>Placa del Vehiculo</th>
+              <th>Nombre de la Sucursal</th>
+              <th>Nombre del Lavado</th>
+              <th>Nombre Completo del Trabajador</th>
+              <th>Hora</th>
+              <th>Facturada</th>
+              <th>Duracion(minutos)</th>
+
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cita of citas">
+              <th>{{ cita.id_cita}}</th>
+              <td>{{ nombreCompletoCliente(cita) }}</td>
+              <td>{{ cita.placa_vehiculo }}</td>
+              <td>{{ cita.nombre_sucursal }}</td>
+              <td>{{ cita.nombre_lavado }}</td>
+              <td>{{ nombreCompletoTrabajador(cita) }}</td>
+              <td>{{ cita.hora }}</td>
+              <td>{{ cita.facturada }}</td>
+              <td>{{ cita.duracion }}</td>
+              <td>
+              </td>
+              <td>
+                <button type="button" class="btn btn-primary border-danger bg-transparent" (click)="borrarCita(cita.id_cita)">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -15,6 +15,7 @@ import { GestionLavadosComponent } from './gestion-lavados/gestion-lavados.compo
 import { LavadoComponent } from './lavado/lavado.component';
 import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
 /**
  * Definiendo rutas a componentes
  */
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'lavado', component: LavadoComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'gestion-clientes', component: GestionClientesComponent, pathMatch: 'full'},
   { path: 'cliente', component: ClienteComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'gestion-citas', component: GestionCitasComponent, pathMatch: 'full'},
   { path: '**', redirectTo: 'home'}
 ];
 
