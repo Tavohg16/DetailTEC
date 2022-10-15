@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
       route: "gestion-proveedores"
     },
      {
-      title: "Gestion de Insumos",
+      title: "Gestion de Productos",
       icon: "fa-solid fa-barcode",
       route: "gestion-productos"
     },
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
     {
       title: "Gestion de Clientes",
       icon: "fa-solid fa-user",
-      route: ""
+      route: "gestion-clientes"
     },
     {
       title: "Registro de Citas",

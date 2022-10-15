@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import {
+  Router,
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
 import { LoginService } from './login/login.service';
 
 /**
@@ -8,9 +13,9 @@ import { LoginService } from './login/login.service';
 @Injectable()
 export class AuthGuardService implements CanActivate {
   constructor(public loginService: LoginService, public router: Router) {}
-  
+
   /**
-   * Método para deifnir si el usuario tiene acceso a una ruta definida. 
+   * Método para deifnir si el usuario tiene acceso a una ruta definida.
    * @param route Detalles de la ruta que se está tratando de accesar.
    * @returns True o false dependiendo de si se permite el acceso o no.
    */
@@ -27,8 +32,7 @@ export class AuthGuardService implements CanActivate {
       if (!this.loginService.isLoggedIn) {
         this.router.navigate(['login']);
         return false;
-      }
-      else {
+      } else {
         // Manejo de casos de trabajador o cliente para cada ruta
         console.log(route.routeConfig?.path);
         switch (route.routeConfig?.path) {
@@ -52,11 +56,16 @@ export class AuthGuardService implements CanActivate {
               this.router.navigate(['home']);
             }
             return this.loginService.isAdmin;
-            case 'gestion-lavados' || 'lavado':
-              if (!this.loginService.isAdmin) {
-                this.router.navigate(['home']);
-              }
-              return this.loginService.isAdmin;
+          case 'gestion-lavados' || 'lavado':
+            if (!this.loginService.isAdmin) {
+              this.router.navigate(['home']);
+            }
+            return this.loginService.isAdmin;
+          case 'gestion-clientes' || 'cliente':
+            if (!this.loginService.isAdmin) {
+              this.router.navigate(['home']);
+            }
+            return this.loginService.isAdmin;
           default:
             return true;
         }

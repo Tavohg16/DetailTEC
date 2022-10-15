@@ -1,0 +1,240 @@
+<div class="container text-center">
+    <div class="mt-5">
+      <div class="card w-75 mx-auto">
+        <div class="card-header">
+          <h2>{{ title }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="container text-center">
+            <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="cedula_cliente">Cédula</label>
+                  <input
+                    type="text"
+                    formControlName="cedula_cliente"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['cedula_cliente'].errors
+                    }"
+                  />
+                </div>
+                <div class="col">
+                  <label for="nombre">Nombre</label>
+                  <input
+                    type="text"
+                    formControlName="nombre"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['nombre'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="primer_apellido">Primer apellido</label>
+                  <input
+                    type="text"
+                    formControlName="primer_apellido"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid':
+                        clienteFormControls['primer_apellido'].errors
+                    }"
+                  />
+                </div>
+                <div class="col">
+                    <label for="segundo_apellido">Segundo apellido</label>
+                    <input
+                      type="text"
+                      formControlName="segundo_apellido"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          clienteFormControls['segundo_apellido'].errors
+                      }"
+                    />
+                  </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="correo_cliente">Correo</label>
+                  <input
+                    type="email"
+                    email="true"
+                    formControlName="correo_cliente"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid':
+                        clienteFormControls['correo_cliente'].errors
+                    }"
+                  />
+                </div>
+                <div class="col">
+                    <label for="usuario">Usuario</label>
+                    <input
+                      type="text"
+                      formControlName="usuario"
+                      class="form-control mt-2"
+                      [ngClass]="{
+                        'is-invalid':
+                          clienteFormControls['usuario'].errors
+                      }"
+                    />
+                  </div>
+              </div>
+              <div *ngIf="formType === 'editar'" class="row mt-3">
+                <div class="col">
+                  <label for="password_cliente">Contraseña</label>
+                  <input
+                    type="text"
+                    formControlName="password_cliente"
+                    class="form-control mt-2 w-50 mx-auto"
+                    [ngClass]="{
+                      'is-invalid':
+                        clienteFormControls['password_cliente'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="telefono_1">Teléfono 1</label>
+                  <input
+                    type="text"
+                    formControlName="telefono_1"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid':
+                        clienteFormControls['telefono_1'].errors
+                    }"
+                  />
+                </div>
+                <div class="col">
+                    <label for="telefono_2">Teléfono 2</label>
+                    <input
+                      type="text"
+                      formControlName="telefono_2"
+                      class="form-control mt-2"
+                      [ngClass]="{
+                        'is-invalid':
+                          clienteFormControls['telefono_2'].errors
+                      }"
+                    />
+                  </div>
+              </div>
+              <div class="row mt-3">
+                <label ><h4>Dirección 1</h4></label>
+                <div class="col">
+                  <label for="provincia_1">Provincia</label>
+                  <select
+                    #provincia_1
+                    formControlName="provincia_1"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['provincia_1'].errors}"
+                      (change)="seleccionarProvincia1(provincia_1.value)"
+                  >
+                    <option *ngFor="let provincia of lista_provincias_1" [value]="provincia.numero">
+                      {{ provincia.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="canton_1">Canton</label>
+                  <select
+                    #canton_1
+                    formControlName="canton_1"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['canton_1'].errors}"
+                      (change)="seleccionarCanton1(canton_1.value)"
+                  >
+                    <option *ngFor="let canton of lista_cantones_1" [value]="canton.numero">
+                      {{ canton.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="distrito_1">Distrito</label>
+                  <select
+                    #distrito_1
+                    formControlName="distrito_1"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['distrito_1'].errors}"
+                      (change)="seleccionarDistrito1(distrito_1.value)"
+                  >
+                    <option *ngFor="let distrito of lista_distritos_1" [value]="distrito.numero">
+                      {{ distrito.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <label ><h4>Dirección 2</h4></label>
+                <div class="col">
+                  <label for="provincia_2">Provincia</label>
+                  <select
+                    #provincia_2
+                    formControlName="provincia_2"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['provincia_2'].errors}"
+                      (change)="seleccionarProvincia2(provincia_2.value)"
+                  >
+                    <option *ngFor="let provincia of lista_provincias_2" [value]="provincia.numero">
+                      {{ provincia.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="canton_2">Canton</label>
+                  <select
+                    #canton_2
+                    formControlName="canton_2"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['canton_2'].errors}"
+                      (change)="seleccionarCanton2(canton_2.value)"
+                  >
+                    <option *ngFor="let canton of lista_cantones_2" [value]="canton.numero">
+                      {{ canton.nombre }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="distrito_2">Distrito</label>
+                  <select
+                    #distrito_2
+                    formControlName="distrito_2"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': clienteFormControls['distrito_2'].errors}"
+                      (change)="seleccionarDistrito2(distrito_2.value)"
+                  >
+                    <option *ngFor="let distrito of lista_distritos_2" [value]="distrito.numero">
+                      {{ distrito.nombre }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group mt-5">
+                <button
+                  [disabled]="loading || clienteForm.invalid"
+                  class="btn btn-primary"
+                >
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

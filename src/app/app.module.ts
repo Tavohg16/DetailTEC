@@ -18,6 +18,8 @@ import { GestionProductosComponent } from './gestion-productos/gestion-productos
 import { ProductoComponent } from './producto/producto.component';
 import { GestionLavadosComponent } from './gestion-lavados/gestion-lavados.component';
 import { LavadoComponent } from './lavado/lavado.component';
+import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { LavadoComponent } from './lavado/lavado.component';
     ProductoComponent,
     GestionLavadosComponent,
     LavadoComponent,
+    GestionClientesComponent,
+    ClienteComponent,
   ],
   imports: [
     BrowserModule,
