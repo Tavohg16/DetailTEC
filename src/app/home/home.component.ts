@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     {
       title: "Registro de Citas",
       icon: "fa-solid fa-calendar-check",
-      route: ""
+      route: "gestion-citas"
     },
     {
       title: "Facturacion",
