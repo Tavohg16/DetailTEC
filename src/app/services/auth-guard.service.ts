@@ -21,7 +21,7 @@ export class AuthGuardService implements CanActivate {
    */
   canActivate(route: ActivatedRouteSnapshot): boolean {
     if (route.routeConfig?.path === 'login') {
-      // Para la ruta loggin, si el usuario ya está autenticado se redirige a home, si no permite el acceso.
+      // Para la ruta login, si el usuario ya está autenticado se redirige a home, si no permite el acceso.
       if (this.loginService.isLoggedIn) {
         this.router.navigate(['home']);
         return false;
@@ -66,6 +66,11 @@ export class AuthGuardService implements CanActivate {
               this.router.navigate(['home']);
             }
             return this.loginService.isAdmin;
+            case 'gestion-citas' || 'cita':
+              if (!this.loginService.isAdmin) {
+                this.router.navigate(['home']);
+              }
+              return this.loginService.isAdmin;
           default:
             return true;
         }
