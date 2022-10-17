@@ -9,7 +9,7 @@
             <form [formGroup]="productoForm" (ngSubmit)="onSubmit()">
               <div class="row mt-3">
                 <div class="col">
-                  <label for="nombre_insumo">Nombre Insumo</label>
+                  <label for="nombre_insumo">Nombre Producto</label>
                   <input
                     type="text"
                     formControlName="nombre_insumo"
@@ -20,7 +20,7 @@
                   />
                 </div>
                 <div class="col">
-                  <label for="costo">Costo</label>
+                  <label for="costo">Costo (colones)</label>
                   <input
                     type="text"
                     formControlName="costo"
@@ -47,7 +47,7 @@
               </div>
               <div class="row mt-3">
                 <div class="col">
-                  <label for="cedula_juridica_proveedor">Cedula Juridica</label>
+                  <label for="cedula_juridica_proveedor">Cedula Juridica Proveedor</label>
                   <input
                     type="text"
                     formControlName="cedula_juridica_proveedor"

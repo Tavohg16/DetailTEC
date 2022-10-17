@@ -20,7 +20,7 @@
                   />
                 </div>
                 <div class="col">
-                  <label for="costo_personal">Costo Personal</label>
+                  <label for="costo_personal">Costo Personal (colones)</label>
                   <input
                     type="text"
                     formControlName="costo_personal"
@@ -33,25 +33,23 @@
               </div>
               <div class="row mt-3">
                 <div class="col">
-                  <label for="precio">Precio</label>
+                  <label for="precio">Precio (colones)</label>
                   <input
                     type="text"
                     formControlName="precio"
-                    class="form-control mt-2 w-50 mx-auto"
+                    class="form-control mt-2"
                     [ngClass]="{
                       'is-invalid':
                         lavadoFormControls['precio'].errors
                     }"
                   />
                 </div>
-              </div>
-              <div class="row mt-3">
                 <div class="col">
                   <label for="duracion">Duracion (minutos)</label>
                   <input
                     type="text"
                     formControlName="duracion"
-                    class="form-control mt-2 w-50 mx-auto"
+                    class="form-control mt-2"
                     [ngClass]="{
                       'is-invalid':
                         lavadoFormControls['duracion'].errors
@@ -65,26 +63,48 @@
                   <input
                     type="text"
                     formControlName="puntos_otorgados"
-                    class="form-control mt-2 w-50 mx-auto"
+                    class="form-control mt-2"
                     [ngClass]="{
                       'is-invalid':
                         lavadoFormControls['puntos_otorgados'].errors
                     }"
                   />
                 </div>
-              </div>
-              <div class="row mt-3">
                 <div class="col">
                   <label for="costo_puntos">Costo Puntos</label>
                   <input
                     type="text"
                     formControlName="costo_puntos"
-                    class="form-control mt-2 w-50 mx-auto"
+                    class="form-control mt-2"
                     [ngClass]="{
                       'is-invalid':
                         lavadoFormControls['costo_puntos'].errors
                     }"
                   />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="roles_seleccionados">Roles asociados</label>
+                  <div class="d-flex flex-md-column flex-lg-row justify-content-center">
+                    <div *ngFor="let rol of rolesOpciones; let i=index" class="form-control mt-2 w-md-50 w-lg-25 mx-2">
+                      <input type="checkbox" formArrayName="roles_seleccionados" value={{rol.id_rol}} [checked]="rol.asignado" (change)="onCheckboxRolesChange($event)" 
+                      />
+                      {{ rol.tipo_rol}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="productos_seleccionados">Productos asociados</label>
+                  <div class="d-flex flex-md-column flex-lg-row justify-content-center">
+                    <div *ngFor="let producto of productosOpciones" class="form-control mt-2 w-md-50 w-lg-25 mx-2">
+                      <input type="checkbox" formArrayName="productos_seleccionados" value={{producto.nombre_insumo}} [checked]="producto.asignado" (change)="onCheckboxProductosChange($event)" 
+                      />
+                      {{ producto.nombre_insumo}}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div class="form-group mt-5">

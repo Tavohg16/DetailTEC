@@ -10,8 +10,8 @@
           <thead>
             <tr>
               <th>Nombre del Lavado</th>
-              <th>Costo Personal</th>
-              <th>Precio</th>
+              <th>Costo Personal (colones)</th>
+              <th>Precio (colones)</th>
               <th>Duracion (minutos)</th>
               <th>Puntos Otorgados</th>
               <th>Coste de Puntos</th>
@@ -28,8 +28,8 @@
               <td>{{ lavado.duracion }}</td>
               <td>{{ lavado.puntos_otorgados }}</td>
               <td>{{ lavado.costo_puntos }}</td>
-              <td><p *ngFor="let insumo of lavado.insumos">{{insumo}}, </p></td>
-              <td><p *ngFor="let rol of lavado.roles">{{rol.tipo_rol}}, </p></td>
+              <td><p *ngFor="let insumo of lavado.insumos">{{insumo}}</p></td>
+              <td><p *ngFor="let rol of lavado.roles">{{rol.tipo_rol}}</p></td>
               <td>
                 <button type="button" class="btn btn-primary" (click)="editarLavado(lavado)">
                   <i class="fa-solid fa-pen-to-square"></i>
