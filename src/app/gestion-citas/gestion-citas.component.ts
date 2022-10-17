@@ -1,23 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CitasService } from '../services/citas/citas.service';
 import {
-    Cita,
-    CitasResponse,
-    CitaResponse,
-  } from '../services/citas/citas.types';
+  Cita,
+  CitasResponse,
+  CitaResponse,
+} from '../services/citas/citas.types';
 
 @Component({
-    selector: 'app-gestion-citas',
-    templateUrl: './gestion-citas.component.html',
-    styleUrls: ['./gestion-citas.component.css'],
+  selector: 'app-gestion-citas',
+  templateUrl: './gestion-citas.component.html',
+  styleUrls: ['./gestion-citas.component.css'],
 })
 export class GestionCitasComponent implements OnInit {
-    protected citas: Cita[] = [];
+  protected citas: Cita[] = [];
 
-
-  constructor(
-    private citasService: CitasService,
-  ) {}
+  constructor(private citasService: CitasService) {}
 
   ngOnInit(): void {
     this.obtenerCitas();
@@ -75,5 +72,21 @@ export class GestionCitasComponent implements OnInit {
     return `${cita.nombre_trabajador} ${cita.apellido_trabajador}`;
   }
 
+  protected fechaCita(fechaCita: string) {
+    const hora = new Date(fechaCita);
+    return hora.toLocaleDateString('es-CR', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    });
+  }
 
+  protected horaCita(horaCita: string) {
+    const hora = new Date(horaCita);
+    return hora.toLocaleTimeString('es-CR', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+  }
 }
