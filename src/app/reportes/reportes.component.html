@@ -1,13 +1,4 @@
 <div class="container text-center">
-    <ngb-datepicker
-      class="bg-white mt-5"
-      #dp
-      (dateSelect)="onDateSelection($event)"
-      [displayMonths]="2"
-      [dayTemplate]="t"
-      outsideDays="hidden"
-    >
-    </ngb-datepicker>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5 my-auto">
       <div *ngFor="let option of options" class="col">
         <div (click)="generarReporte(option)" class="card w-100 my-auto">
@@ -24,16 +15,3 @@
       </div>
     </div>
   </div>
-  
-  <ng-template #t let-date let-focused="focused">
-    <span
-      class="custom-day"
-      [class.focused]="focused"
-      [class.range]="isRange(date)"
-      [class.faded]="isHovered(date) || isInside(date)"
-      (mouseenter)="hoveredDate = date"
-      (mouseleave)="hoveredDate = null"
-    >
-      {{ date.day }}
-    </span>
-  </ng-template>

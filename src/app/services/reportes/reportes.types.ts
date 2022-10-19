@@ -1,14 +1,9 @@
 export interface Reporte {
-    id: number,
-    dia_inicio?: number,
-    mes_inicio?: number,
-    ano_inicio?: number,
-    dia_final?: number,
-    mes_final?: number,
-    ano_final?: number
+    tipo_reporte: number
+    cedula_cliente: string
 }
 
 export interface ReporteResponse {
-    actualizado: boolean,
+    generado: boolean,
     mensaje: string,
 }

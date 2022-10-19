@@ -10,7 +10,7 @@ import { Reporte, ReporteResponse } from './reportes.types';
 })
 export class ReportesService {
   // Definiendo ruta a la que se hara los request http relacionados a las citas
-  private reportesUrl: string = `${environment.apiUrl}/manage/reporting`;
+  private reportesUrl: string = `${environment.apiUrl}/manage/report`;
 
   private httpOptions = {
     headers: new HttpHeaders({
