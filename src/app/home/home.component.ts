@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit {
     {
       title: "Reportes",
       icon: "fa-solid fa-file-pdf",
-      route: ""
+      route: "reportes"
     }, 
   ];
 
