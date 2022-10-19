@@ -9,11 +9,12 @@
           <thead>
             <tr>
               <th>ID de la Cita</th>
-              <th>Nombre Completo del Cliente</th>
+              <th>Nombre del Cliente</th>
               <th>Placa del Vehiculo</th>
               <th>Nombre de la Sucursal</th>
               <th>Nombre del Lavado</th>
-              <th>Nombre Completo del Trabajador</th>
+              <th>Nombre del Trabajador</th>
+              <th>Fecha</th>
               <th>Hora</th>
               <th>Facturada</th>
               <th>Duracion(minutos)</th>
@@ -29,8 +30,9 @@
               <td>{{ cita.nombre_sucursal }}</td>
               <td>{{ cita.nombre_lavado }}</td>
               <td>{{ nombreCompletoTrabajador(cita) }}</td>
-              <td>{{ cita.hora }}</td>
-              <td>{{ cita.facturada }}</td>
+              <td>{{ fechaCita(cita.hora) }}</td>
+              <td>{{ horaCita(cita.hora) }}</td>
+              <td>{{ cita.facturada ? 'Sí' : 'No' }}</td>
               <td>{{ cita.duracion }}</td>
               <td>
               </td>
