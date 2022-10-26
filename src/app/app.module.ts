@@ -21,6 +21,7 @@ import { LavadoComponent } from './lavado/lavado.component';
 import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
     GestionClientesComponent,
     ClienteComponent,
     GestionCitasComponent,
+    ReportesComponent,
   ],
   imports: [
     BrowserModule,
