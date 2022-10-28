@@ -1,0 +1,191 @@
+<div class="container text-center">
+    <div class="row align-items-center mt-5">
+      <div class="card w-75 mx-auto">
+        <div class="card-header">
+          <h2>{{ title }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="container text-center">
+            <form [formGroup]="citaForm" (ngSubmit)="onSubmit()">
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="cedula_cliente">Cédula cliente</label>
+                  <input
+                    type="text"
+                    formControlName="cedula_cliente"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': citaFormControls['cedula_cliente'].errors
+                    }"
+                  />
+                </div>
+                <div class="col">
+                  <label for="placa_vehiculo">Placa vehículo</label>
+                  <input
+                    type="text"
+                    formControlName="placa_vehiculo"
+                    class="form-control mt-2"
+                    [ngClass]="{
+                      'is-invalid': citaFormControls['placa_vehiculo'].errors
+                    }"
+                  />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="nombre_sucursal">Sucursal</label>
+                  <select
+                    #nombre_sucursal
+                    formControlName="nombre_sucursal"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': citaFormControls['nombre_sucursal'].errors
+                    }"
+                  >
+                    <option
+                      *ngFor="let sucursal of sucursales"
+                      [value]="sucursal.nombre_sucursal"
+                    >
+                      {{ sucursal.nombre_sucursal }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="nombre_lavado">Tipo de Lavado</label>
+                  <select
+                    #canton
+                    formControlName="nombre_lavado"
+                    class="form-select form-control text-center mt-2 mx-auto"
+                    [ngClass]="{
+                      'is-invalid': citaFormControls['nombre_lavado'].errors
+                    }"
+                  >
+                    <option
+                      *ngFor="let lavado of lavados"
+                      [value]="lavado.nombre_lavado"
+                    >
+                      {{ lavado.nombre_lavado }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="fecha">Fecha</label>
+                  <div class="input-group mt-2 w-50 mx-auto">
+                    <input
+                      formControlName="fecha"
+                      class="form-control"
+                      placeholder="aaaa-mm-dd"
+                      name="dpfi"
+                      ngbDatepicker
+                      #dfi="ngbDatepicker"
+                      [minDate]="minDate()"
+                    />
+                    <button
+                      class="btn btn-outline-secondary calendar"
+                      (click)="dfi.toggle()"
+                      type="button"
+                    >
+                      <i class="fa-solid fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label for="hora">Hora</label>
+                  <div class="input-group mt-2 mx-auto">
+                    <ngb-timepicker
+                      formControlName="hora"
+                      class="d-flex mt-2 w-50 mx-auto justify-content-center"
+                      [meridian]="true"
+                      [(ngModel)]="citaForm.value.hora"
+                      [hourStep]="1"
+                      [minuteStep]="30"
+                    ></ngb-timepicker>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col">
+                  <label
+                    *ngIf="citaForm.value.nombre_lavado === null"
+                    class="text-danger"
+                    ><h5>Seleccione primero un tipo de lavado</h5></label
+                  >
+                  <label
+                    *ngIf="
+                      !horaDisponible() && citaForm.value.nombre_lavado != null
+                    "
+                    class="text-danger"
+                    ><h5>Horario seleccionado no disponible</h5></label
+                  >
+                  <label
+                    *ngIf="
+                      horaDisponible() && citaForm.value.nombre_lavado != null
+                    "
+                    class="text-success"
+                    ><h5>Horario seleccionado disponible</h5></label
+                  >
+                </div>
+              </div>
+              <div class="form-group mt-5">
+                <button
+                  [disabled]="loading || citaForm.invalid || !horaDisponible()"
+                  class="btn btn-primary"
+                >
+                  <span
+                    *ngIf="loading"
+                    class="spinner-border spinner-border-sm mr-1"
+                  ></span>
+                  Guardar
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre del Cliente</th>
+              <th>Placa del Vehiculo</th>
+              <th>Nombre de la Sucursal</th>
+              <th>Nombre del Lavado</th>
+              <th>Nombre del Trabajador</th>
+              <th>Fecha</th>
+              <th>Comenzando</th>
+              <th>Completando</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cita of citas">
+              <td>{{ cita.cedula_cliente === cliente.cedula_cliente ? nombreCompletoCliente(cita) : 'Oculto' }}</td>
+              <td>{{ cita.cedula_cliente === cliente.cedula_cliente ? cita.placa_vehiculo : 'Oculta' }}</td>
+              <td>{{ cita.cedula_cliente === cliente.cedula_cliente ? cita.nombre_sucursal : 'Oculto' }}</td>
+              <td>{{ cita.cedula_cliente === cliente.cedula_cliente ? cita.nombre_lavado : 'Oculto' }}</td>
+              <td>{{ cita.cedula_cliente === cliente.cedula_cliente ? nombreCompletoTrabajador(cita) : 'Oculto' }}</td>
+              <td>{{ fechaCita(cita.hora) }}</td>
+              <td>{{ horaInicioCita(cita) }}</td>
+              <td>{{ horaFinalizacionCita(cita) }}</td>
+              <td>
+                <button
+                  *ngIf="cita.cedula_cliente === cliente.cedula_cliente "
+                  type="button"
+                  class="btn btn-primary border-danger bg-transparent"
+                  (click)="borrarCita(cita.id_cita)"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

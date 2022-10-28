@@ -23,6 +23,9 @@ import { ClienteComponent } from './cliente/cliente.component';
 import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
 import { ReportesComponent } from './reportes/reportes.component';
 import { FacturaComponent } from './factura/factura.component';
+import { GestionCitasClienteComponent } from './gestion-citas-cliente/gestion-citas-cliente.component';
+import { MisDatosComponent } from './mis-datos/mis-datos.component';
+import { MisPuntosComponent } from './mis-puntos/mis-puntos.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { FacturaComponent } from './factura/factura.component';
     GestionCitasComponent,
     ReportesComponent,
     FacturaComponent,
+    GestionCitasClienteComponent,
+    MisDatosComponent,
+    MisPuntosComponent,
   ],
   imports: [
     BrowserModule,

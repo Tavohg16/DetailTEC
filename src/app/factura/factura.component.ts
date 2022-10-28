@@ -106,7 +106,7 @@ export class FacturaComponent {
       .subscribe({
         next: (facturaResponse: FacturaResponse) => {
           alert(facturaResponse.mensaje);
-          this.router.navigate(['gestion-facturas']);
+          this.router.navigate(['gestion-citas']);
           this.loading = false;
         },
         error: (error) => {

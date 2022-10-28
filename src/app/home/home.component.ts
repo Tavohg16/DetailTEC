@@ -55,9 +55,19 @@ export class HomeComponent implements OnInit {
 
   protected optionsCliente = [
     {
+      title: "Mis datos",
+      icon: "fa-solid fa-user",
+      route: "mis-datos"
+    },
+    {
       title: "Registro de Citas",
       icon: "fa-solid fa-calendar-check",
-      route: ""
+      route: "gestion-citas-cliente"
+    },
+    {
+      title: "Mis puntos",
+      icon: "fa-solid fa-star",
+      route: "mis-puntos"
     },
   ];
   constructor(
