@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import {
   CitasResponse,
   CitaResponse,
+  Cita,
 } from './citas.types'
 
 @Injectable({
@@ -49,4 +50,17 @@ export class CitasService {
       {...this.httpOptions, body }
     );
   }
+
+    /**
+  * Metodo crear una cita.
+  * @returns observable del query: Observable<CitaResponse[]>.
+  */
+     crearCita(cita: Cita) {
+      const body = JSON.stringify(cita);
+      return this.http.post<CitaResponse>(
+        this.citasUrl,
+        body,
+        this.httpOptions
+      );
+    }
 }

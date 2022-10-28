@@ -66,7 +66,7 @@ export class AuthGuardService implements CanActivate {
               this.router.navigate(['home']);
             }
             return this.loginService.isAdmin;
-            case 'gestion-citas' || 'cita':
+            case 'gestion-citas' || 'factura' || 'reportes':
               if (!this.loginService.isAdmin) {
                 this.router.navigate(['home']);
               }

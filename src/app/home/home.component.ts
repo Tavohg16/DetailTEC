@@ -47,11 +47,6 @@ export class HomeComponent implements OnInit {
       route: "gestion-citas"
     },
     {
-      title: "Facturacion",
-      icon: "fa-solid fa-receipt",
-      route: ""
-    }, 
-    {
       title: "Reportes",
       icon: "fa-solid fa-file-pdf",
       route: "reportes"

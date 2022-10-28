@@ -22,6 +22,7 @@ import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.co
 import { ClienteComponent } from './cliente/cliente.component';
 import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { FacturaComponent } from './factura/factura.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ReportesComponent } from './reportes/reportes.component';
     ClienteComponent,
     GestionCitasComponent,
     ReportesComponent,
+    FacturaComponent,
   ],
   imports: [
     BrowserModule,

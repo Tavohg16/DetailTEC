@@ -17,6 +17,7 @@ import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.co
 import { ClienteComponent } from './cliente/cliente.component';
 import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { FacturaComponent } from './factura/factura.component';
 /**
  * Definiendo rutas a componentes
  */
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'gestion-clientes', component: GestionClientesComponent, pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'cliente', component: ClienteComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'gestion-citas', component: GestionCitasComponent, pathMatch: 'full'},
+  { path: 'factura', component: FacturaComponent ,  pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'reportes', component: ReportesComponent ,  pathMatch: 'full', canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'home'}
 ];

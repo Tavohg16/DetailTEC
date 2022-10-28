@@ -103,6 +103,7 @@
                       name="dpfi"
                       ngbDatepicker
                       #dfi="ngbDatepicker"
+                      [maxDate]="maxDateApertura()"
                     />
                     <button
                       class="btn btn-outline-secondary calendar"
@@ -123,6 +124,7 @@
                       name="dpfn"
                       ngbDatepicker
                       #dfn="ngbDatepicker"
+                      [minDate]="minDateInicioGerencia()"
                     />
                     <button
                       class="btn btn-outline-secondary calendar"
