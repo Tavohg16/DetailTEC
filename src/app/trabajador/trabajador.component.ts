@@ -120,6 +120,42 @@ export class TrabajadorComponent implements OnInit {
     });
   }
 
+  protected maxDateNacimiento() {
+    let today = new Date();
+    return {year: today.getFullYear() - 18, month: today.getMonth() + 1, day: today.getDate() }
+  }
+
+  protected maxDateIngreso() {
+    let today = new Date();
+    return {year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() };
+  }
+
+  protected minDateIngreso() {
+    if (!this.trabajadorForm.value.fechaNacimiento) {
+      let ingreso = new Date(
+        this.maxDateNacimiento().year,
+        this.maxDateNacimiento().month - 1,
+        this.maxDateNacimiento().day
+      );
+      return {
+        year: ingreso.getFullYear() + 18,
+        month: ingreso.getMonth() + 1,
+        day: ingreso.getDate(),
+      };
+    } else {
+      let inicio = new Date(
+        this.trabajadorForm.value.fechaNacimiento.year,
+        this.trabajadorForm.value.fechaNacimiento.month - 1,
+        this.trabajadorForm.value.fechaNacimiento.day
+      );
+      return {
+        year: inicio.getFullYear() + 18,
+        month: inicio.getMonth() + 1,
+        day: inicio.getDate(),
+      };
+    }
+  }
+
   // Getter para acceder facilmente a los form fields
   get trabajadorFormControls() {
     return this.trabajadorForm.controls;

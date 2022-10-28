@@ -17,6 +17,10 @@ import { GestionClientesComponent } from './gestion-clientes/gestion-clientes.co
 import { ClienteComponent } from './cliente/cliente.component';
 import { GestionCitasComponent } from './gestion-citas/gestion-citas.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { FacturaComponent } from './factura/factura.component';
+import { MisDatosComponent } from './mis-datos/mis-datos.component';
+import { GestionCitasClienteComponent } from './gestion-citas-cliente/gestion-citas-cliente.component';
+import { MisPuntosComponent } from './mis-puntos/mis-puntos.component';
 /**
  * Definiendo rutas a componentes
  */
@@ -36,7 +40,11 @@ const routes: Routes = [
   { path: 'gestion-clientes', component: GestionClientesComponent, pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'cliente', component: ClienteComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'gestion-citas', component: GestionCitasComponent, pathMatch: 'full'},
+  { path: 'factura', component: FacturaComponent ,  pathMatch: 'full', canActivate: [AuthGuard]},
   { path: 'reportes', component: ReportesComponent ,  pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'mis-datos', component: MisDatosComponent ,  pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'gestion-citas-cliente', component: GestionCitasClienteComponent ,  pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'mis-puntos', component: MisPuntosComponent ,  pathMatch: 'full', canActivate: [AuthGuard]},
   { path: '**', redirectTo: 'home'}
 ];
 

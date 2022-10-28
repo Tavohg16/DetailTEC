@@ -7,25 +7,35 @@ import {
   CitasResponse,
   CitaResponse,
 } from '../services/citas/citas.types';
+import { ClientesService } from '../services/clientes/clientes.service';
+import { Cliente, ClientesResponse } from '../services/clientes/clientes.types';
 import { LavadosService } from '../services/lavados/lavados.service';
 import { Lavado, LavadosResponse } from '../services/lavados/lavados.types';
+import { LoginService } from '../services/login/login.service';
 import { SucursalesService } from '../services/sucursales/sucursales.service';
 import {
   Sucursal,
   SucursalesResponse,
 } from '../services/sucursales/sucursales.types';
-
 @Component({
-  selector: 'app-gestion-citas',
-  templateUrl: './gestion-citas.component.html',
-  styleUrls: ['./gestion-citas.component.css'],
+  selector: 'app-gestion-citas-cliente',
+  templateUrl: './gestion-citas-cliente.component.html',
+  styleUrls: ['./gestion-citas-cliente.component.css'],
 })
-export class GestionCitasComponent implements OnInit {
+export class GestionCitasClienteComponent implements OnInit {
+  protected cliente: any;
   protected citas: Cita[] = [];
   protected sucursales: Sucursal[] = [];
   protected lavados: Lavado[] = [];
   protected title = 'Gestión de Citas';
-  protected citaForm: FormGroup;
+  protected citaForm: FormGroup = this.formBuilder.group({
+    cedula_cliente: [{ value: null, disabled: true }],
+    placa_vehiculo: [null, Validators.required],
+    nombre_sucursal: [null, Validators.required],
+    nombre_lavado: [null, Validators.required],
+    fecha: [null, Validators.required],
+    hora: [null, Validators.required],
+  });
   protected loading: boolean = false;
 
   constructor(
@@ -33,18 +43,36 @@ export class GestionCitasComponent implements OnInit {
     private formBuilder: FormBuilder,
     private citasService: CitasService,
     private sucursalesService: SucursalesService,
-    private lavadosService: LavadosService
+    private lavadosService: LavadosService,
+    protected loginService: LoginService,
+    private clientesService: ClientesService
   ) {
-    this.citaForm = this.formBuilder.group({
-      cedula_cliente: [
-        null,
-        [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)],
-      ],
-      placa_vehiculo: [null, Validators.required],
-      nombre_sucursal: [null, Validators.required],
-      nombre_lavado: [null, Validators.required],
-      fecha: [null, Validators.required],
-      hora: [null, Validators.required],
+    this.clientesService.todosClientes().subscribe({
+      next: (clientesResponse: ClientesResponse) => {
+        if (clientesResponse.exito) {
+          this.cliente = clientesResponse.clientes.find(
+            (clienteLista: Cliente) => {
+              return clienteLista.usuario === this.loginService.idLogin;
+            }
+          );
+          this.citaForm = this.formBuilder.group({
+            cedula_cliente: [
+              { value: this.cliente.cedula_cliente, disabled: true },
+            ],
+            placa_vehiculo: [null, Validators.required],
+            nombre_sucursal: [null, Validators.required],
+            nombre_lavado: [null, Validators.required],
+            fecha: [null, Validators.required],
+            hora: [null, Validators.required],
+          });
+        } else {
+          alert('Error al obtener cliente de cita.');
+        }
+      },
+      error: (error) => {
+        alert('Error al obtener cliente de cita.');
+        console.log(error);
+      },
     });
   }
 
@@ -255,10 +283,6 @@ export class GestionCitasComponent implements OnInit {
     return horaDisponible;
   }
 
-  facturarCita(cita: Cita) {
-    this.router.navigate(['factura'], { state: cita  });
-  }
-
   // Getter para acceder facilmente a los form fields
   get citaFormControls() {
     return this.citaForm.controls;
@@ -279,8 +303,7 @@ export class GestionCitasComponent implements OnInit {
           this.loading = false;
           this.citaForm = this.formBuilder.group({
             cedula_cliente: [
-              null,
-              [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)],
+              { value: this.cliente.cedula_cliente, disabled: true },
             ],
             placa_vehiculo: [null, Validators.required],
             nombre_sucursal: [null, Validators.required],
@@ -306,7 +329,7 @@ export class GestionCitasComponent implements OnInit {
    */
   formatoCita(citaFormValues: any): Cita {
     return {
-      cedula_cliente: citaFormValues.cedula_cliente,
+      cedula_cliente: this.cliente.cedula_cliente,
       placa_vehiculo: citaFormValues.placa_vehiculo,
       nombre_sucursal: citaFormValues.nombre_sucursal,
       nombre_lavado: citaFormValues.nombre_lavado,

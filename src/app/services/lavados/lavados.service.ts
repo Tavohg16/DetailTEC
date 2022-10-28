@@ -52,7 +52,7 @@ export class LavadosService {
     );
   }
   /**
-  * Metodo crear un producto.
+  * Metodo crear un lavado.
   * @returns observable del query: Observable<LavadoResponse[]>.
   */
     crearLavado(lavado: Lavado) {

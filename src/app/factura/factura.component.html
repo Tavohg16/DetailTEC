@@ -1,0 +1,77 @@
+<div class="container text-center">
+  <div class="mt-5">
+    <div class="card w-75 mx-auto">
+      <div class="card-header">
+        <h2>FacturaResponse</h2>
+      </div>
+      <div class="card-body">
+        <div class="container text-center">
+          <form [formGroup]="facturaForm" (ngSubmit)="onSubmit()">
+            <div class="row mt-3">
+              <div class="col">
+                <label for="cantidad_bebidas">Cantidad de Bebidas</label>
+                <input
+                  type="number"
+                  min="0"
+                  formControlName="cantidad_bebidas"
+                  class="form-control mt-2"
+                  [ngClass]="{
+                    'is-invalid': facturaFormControls['cantidad_bebidas'].errors
+                  }"
+                />
+              </div>
+              <div class="col">
+                <label for="cantidad_snacks">Cantidad de Snacks</label>
+                <input
+                  type="number"
+                  min="0"
+                  formControlName="cantidad_snacks"
+                  class="form-control mt-2"
+                  [ngClass]="{
+                    'is-invalid': facturaFormControls['cantidad_snacks'].errors
+                  }"
+                />
+              </div>
+            </div>
+            <div class="row mt-3 justify-content-center">
+              <div class="col-4">
+                <div class="form-switch padding-right">
+                  <input
+                    class="form-check-input form-control mt-2 mx-auto mb-2"
+                    formControlName="pago_puntos"
+                    type="checkbox"
+                    role="switch"
+                    id="pago_puntos"
+                  />
+                  <label *ngIf="pagoPuntosDisponible()" class="form-check-label" for="pago_puntos"
+                    >Pago con puntos</label
+                  >
+                  <label *ngIf="!pagoPuntosDisponible()" class="form-check-label" for="pago_puntos"
+                    >Pago con puntos no disponible</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col">
+                <h3 class="text-danger">Puntos disponibles: {{ cliente?.puntos_acum ?? 0 }}</h3>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <button
+                [disabled]="loading || facturaForm.invalid"
+                class="btn btn-primary"
+              >
+                <span
+                  *ngIf="loading"
+                  class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

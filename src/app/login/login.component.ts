@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       )
       .subscribe({
         next: (loginResponse: LoginResponse) => {
-          this.loginService.setLoggedIn(loginResponse.logged, loginResponse.administrador);
+          this.loginService.setLoggedIn(loginResponse.logged, loginResponse.administrador, this.loginFormControls['usuario'].value);
           if (loginResponse.logged) {
             this.router.navigate(['']);
           } else {

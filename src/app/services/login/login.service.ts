@@ -48,6 +48,7 @@ export class LoginService {
   logout() {
     window.localStorage.setItem('loggedIn', 'false');
     window.localStorage.setItem('administrador', 'false');
+    window.localStorage.setItem('id', '');
     this.router.navigate(['/login']);
   }
 
@@ -56,9 +57,10 @@ export class LoginService {
    * @param logged Nuevo valor de loggedIn: Boolean.
    * @param administrador Nuevo valor de administrador: Boolean.
    */
-  setLoggedIn(logged: boolean, administrador: boolean) {
+  setLoggedIn(logged: boolean, administrador: boolean, id: string) {
     window.localStorage.setItem('loggedIn', logged.toString());
     window.localStorage.setItem('admin', administrador.toString());
+    window.localStorage.setItem('id', id);
   }
 
   /**
@@ -77,5 +79,13 @@ export class LoginService {
    get isAdmin() {
     this.admin = window.localStorage.getItem('admin') === 'true';
     return this.admin ?? false;
+  }
+
+  /**
+   * Metodo para obtener la variable id.
+   * @returns variable id: String.
+   */
+   get idLogin() {
+    return window.localStorage.getItem('id');
   }
 }

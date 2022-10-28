@@ -34,7 +34,6 @@ export class AuthGuardService implements CanActivate {
         return false;
       } else {
         // Manejo de casos de trabajador o cliente para cada ruta
-        console.log(route.routeConfig?.path);
         switch (route.routeConfig?.path) {
           case 'gestion-trabajadores' || 'trabajador':
             if (!this.loginService.isAdmin) {
@@ -66,11 +65,16 @@ export class AuthGuardService implements CanActivate {
               this.router.navigate(['home']);
             }
             return this.loginService.isAdmin;
-            case 'gestion-citas' || 'cita':
-              if (!this.loginService.isAdmin) {
-                this.router.navigate(['home']);
-              }
-              return this.loginService.isAdmin;
+          case 'gestion-citas' || 'factura' || 'reportes':
+            if (!this.loginService.isAdmin) {
+              this.router.navigate(['home']);
+            }
+            return this.loginService.isAdmin;
+          case 'mis-datos' || 'gestion-citas-cliente' || 'mis-puntos':
+            if (this.loginService.isAdmin) {
+              this.router.navigate(['home']);
+            }
+            return !this.loginService.isAdmin;
           default:
             return true;
         }

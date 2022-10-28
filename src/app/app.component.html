@@ -1,7 +1,7 @@
 <!-- Navbar para trabajadores-->
 <nav
   *ngIf="loginService.isLoggedIn && loginService.isAdmin"
-  class="navbar navbar-dark bg-dark"
+  class="navbar sticky-top navbar-dark bg-dark"
 >
   <div class="container-fluid">
     <a class="navbar-brand" href="home">DetailTEC</a>
@@ -78,6 +78,14 @@
             >Gestión de citas</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="reportes"
+            >Reportes</a
+          >
+        </li>
       </ul>
     </div>
   </div>
@@ -107,6 +115,15 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="home">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="mis-datos">Mis Datos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="gestion-citas-cliente">Registro de Citas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="mis-puntos">Mis Puntos</a>
         </li>
       </ul>
     </div>

@@ -112,6 +112,8 @@
                     name="dpfi"
                     ngbDatepicker
                     #dfi="ngbDatepicker"
+                    [maxDate]="maxDateIngreso()"
+                    [minDate]="minDateIngreso()"
                   />
                   <button
                     class="btn btn-outline-secondary calendar"
@@ -132,6 +134,7 @@
                     name="dpfn"
                     ngbDatepicker
                     #dfn="ngbDatepicker"
+                    [maxDate]="maxDateNacimiento()"
                   />
                   <button
                     class="btn btn-outline-secondary calendar"
